@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>NoStory</title>
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/base.css">
+		<script type="text/javascript" src="http://www.nostory.cn/js/tinymce/tinymce.min.js"></script>
+		<script type="text/javascript" src="http://www.nostory.cn/js/libs.js"></script>
+		<script type="text/javascript" src="http://www.nostory.cn/js/index.js"></script>
+		<script type="text/javascript">
+			define.config({map:{
+				"reglog":"http://www.nostory.cn/js/reglog.js",
+				"index":"http://www.nostory.cn/js/index.js",
+				"template":"http://www.nostory.cn/js/template.js",
+				"md5":"http://www.nostory.cn/js/md5.js",
+				"publish": "http://www.nostory.cn/js/publish.js"
+			}});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div class="top clearfix">
+					<div class="nav-logo">
+						<p class="ego"><a href="/">NoStory</a></p>
+						<!-- <p class="reflection">哦</p> -->
+					</div>
+					<ul class="nav-li">
+						<li><a href="#">ARTICAL</a></li>
+						<li><a href="#">TAG</a></li>
+					</ul>
+					<ul class="sign-log">
+						<li><a href="javascript:void(0);" class="reg-btn">Sign</a></li>
+						<li><a href="javascript:void(0);" class="log-btn">Log</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="publish">
+				<div class="add-post"></div>
+				<div class="post-area">
+					<div class="char-count">字符数：<span>0</span></div>
+					<div class="reset-btn">重置</div>
+					<div class="add-btn">发表</div>
+				</div>
+				
+			</div>
+		</div>
+	<div class="sunrise">
+	</div>
+	<script type="text/javascript">
+		tinymce.init({ 
+			selector:'div.add-post',
+			height:380,max_height:380,min_height:380,
+			width:980,
+			toolbar: 'insertfile undo redo | styleselect | fontselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+			plugins: [
+		    'autolink link image',
+		    'insertdatetime paste'],
+		});
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			require(["index"],function(index){
+				index.init();
+			});
+		});
+	</script>
+	</body>	
+</html>

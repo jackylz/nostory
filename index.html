@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>NoStory</title>
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/base.css">
+		<script type="text/javascript" src="http://www.nostory.cn/js/libs.js"></script>
+		<script type="text/javascript">
+			define.config({map:{
+				"reglog":"http://www.nostory.cn/js/reglog.js",
+				"index":"http://www.nostory.cn/js/index.js",
+				"md5":"http://www.nostory.cn/js/md5.js",
+				"template":"http://www.nostory.cn/js/template.js",
+				"publish": "http://www.nostory.cn/js/publish.js"
+			}});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div class="top clearfix">
+					<div class="nav-logo">
+						<p class="ego"><a href="/">NoStory</a></p>
+						<!-- <p class="reflection">哦</p> -->
+					</div>
+					<ul class="nav-li">
+						<li><a href="#">ARTICAL</a></li>
+						<li><a href="#">TAG</a></li>
+					</ul>
+					<ul class="sign-log">
+						<li><a href="javascript:void(0);" class="reg-btn">Sign</a></li>
+						<li><a href="javascript:void(0);" class="log-btn">Log</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="sea-index">
+				<div class="text-index">Come on.</div>
+			</div>
+		</div>
+		<div class="footer">Copyright&nbsp; &copy; &nbsp;2015</div>
+		<div class="sunrise">
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				require(["index"],function(index){
+					index.init();
+				});
+			});
+		</script>
+	</body>	
+</html>
