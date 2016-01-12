@@ -15,7 +15,7 @@ define('reglog',function(require){
 		pass:/^[^\d\.][0-9|A-Z|a-z]{5,16}/
 	};
 
-	fun = {
+	regFun = {
 		checkFun:function(obj,regex,oVal){
 
 			if(!regex.test($(obj).val())){
@@ -42,17 +42,17 @@ define('reglog',function(require){
 		checkFormat:function(obj){
 
 			if(($(obj).hasClass('email'))){
-				fun.checkFun($(obj),regex.email,$(obj).data('name'));
+				regFun.checkFun($(obj),regex.email,$(obj).data('name'));
 			}else if(($(obj).hasClass('pass'))){
-				fun.checkFun($(obj),regex.pass,$(obj).data('name'));
+				regFun.checkFun($(obj),regex.pass,$(obj).data('name'));
 			}
 		},
 
-		blurEvent:function(obj){
+		blurEvents:function(obj){
 			$.each(obj,function(i,n){
 				var objClass = $(n).data('name');
 				$(document).on('blur','.'+objClass,function(){
-					fun.checkFormat($(n));
+					regFun.checkFormat($(n));
 				});
 			});	
 		},
@@ -112,7 +112,7 @@ define('reglog',function(require){
 								if(r.data.code=='0'){
 									$.toast(r.data.msg);
 									$('.sunrise').click();
-									fun.addUserTab();		
+									regFun.addUserTab();		
 								}else{
 									$.toast(r.data.msg);
 									$('input').val(' ').blur();
@@ -130,9 +130,9 @@ define('reglog',function(require){
 	};
 
 	init = function(){
-		fun.blurEvent([$('.email'),$('.apass'),$('.bpass'),$('.vpass')]);
-		fun.regEvent();
-		fun.logEvent();
+		regFun.blurEvents([$('.email'),$('.apass'),$('.bpass'),$('.vpass')]);
+		regFun.regEvent();
+		regFun.logEvent();
 		$('input.email').focus();
 	}
 
