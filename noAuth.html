@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>注册／登录 - NoStory</title>
+        <link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/images/n.png">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/base.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/noAuth.css">
+        <meta content="telephone=no" name="format-detection" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <script type="text/javascript" src="http://www.nostory.cn/js/libs.js"></script>
+        <script type="text/javascript">
+            define.config({map:{
+                "noAuth":"http://www.nostory.cn/js/noAuth.js",
+                "reglog":"http://www.nostory.cn/js/reglog.js",
+                "index":"http://www.nostory.cn/js/index.js",
+                "template":"http://www.nostory.cn/js/template.js",
+                "md5":"http://www.nostory.cn/js/md5.js",
+            }});
+        </script>
+    </head>
+    <body id="no-auth">
+        <div class="container">
+            <div class="header">
+                <div class="top clearfix">
+                    <div class="nav-logo">
+                        <p class="ego"><a href="/">NoStory</a></p>
+                    </div>
+                    <!-- <ul class="nav-li">
+                        <li><a href="#">ARTICAL</a></li>
+                        <li><a href="#">TAG</a></li>
+                    </ul> -->
+                    <ul class="sign-log">
+                        <li><a href="http://www.nostory.cn/user/about.html" class="reg-btn" target="_blank">关于我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="index-main">
+                <div class="main-box">
+                    <h1>技术、交流、分享</h1><br>
+                    <div class="tab-no-auth">
+                        <a href="javascript:;" class="tab-reg active">注册</a>
+                        <a href="javascript:;" class="tab-log">登录</a>
+                    </div>
+                    <div class="input-list">
+                        <div class="input-wrap">
+                            <input type="text" class="username" placeholder="用户名" required/>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" class="usermail" placeholder="邮箱" required/>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="password" class="passwd" placeholder="密码" required/>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="password" class="re-passwd" placeholder="确认密码" required/>
+                        </div>
+                        <div class="input-wrap no-border-bottom captcha clearfix">
+                            <input type="text" placeholder="验证码" class="captcha-input" required/>
+                            <div class="captcha-img"></div>
+                        </div>
+                        <a href="javascript:;" class="btn-submit go-reg">注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                require(["noAuth"],function(_na){
+                    _na.init();
+                });
+            });
+        </script>
+    </body>
+</html>

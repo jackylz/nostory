@@ -1,0 +1,139 @@
+#no-auth {
+  background: #fbfbfb;
+  height: 100%;
+  font-size: .24rem;
+}
+#no-auth .index-main {
+  margin: auto;
+  padding: .2rem 0;
+  box-sizing: border-box;
+}
+#no-auth .index-main .index-header {
+  text-align: center;
+}
+#no-auth .index-main .index-header .logo {
+  display: block;
+  width: 1.4rem;
+  height: 1.2rem;
+  margin: 0 auto;
+  background: url(../images/n.png) no-repeat;
+  background-size: 1.4rem 1.2rem;
+}
+#no-auth .index-main .index-header .subtitle {
+  width: 100%;
+  height: .6rem;
+  line-height: 1.2rem;
+  font-size: .36rem;
+  color: #555;
+  text-align: center;
+}
+#no-auth .index-main .main-box {
+  width: 80%;
+  min-height: 4rem;
+  margin: .6rem auto 0;
+  box-sizing: border-box;
+}
+#no-auth .index-main .main-box .tab-no-auth {
+  width: 100%;
+  height: .6rem;
+  border: .02rem solid #e2e2e2;
+}
+#no-auth .index-main .main-box .tab-no-auth a,
+#no-auth .index-main .main-box .tab-no-auth a:visited {
+  font-size: .28rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  color: #aaa;
+}
+#no-auth .index-main .main-box .tab-no-auth .tab-reg {
+  display: block;
+  width: 50%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  line-height: .6rem;
+}
+#no-auth .index-main .main-box .tab-no-auth .tab-log {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  line-height: .6rem;
+}
+#no-auth .index-main .main-box .tab-no-auth .active {
+  background: #a5c5f5;
+  color: #fff;
+}
+#no-auth .index-main .main-box .input-list {
+  width: 100%;
+  margin-top: .2rem;
+  border: .02rem solid #e2e2e2;
+}
+#no-auth .index-main .main-box .input-list .input-wrap {
+  position: relative;
+  width: 100%;
+  padding: .02rem 0;
+  box-sizing: border-box;
+}
+#no-auth .index-main .main-box .input-list .input-wrap.no-border-bottom {
+  border-bottom: 0;
+}
+#no-auth .index-main .main-box .input-list .input-wrap input {
+  width: 100%;
+  padding: .3rem;
+  box-sizing: border-box;
+  font-size: .24rem;
+  border: 0;
+  outline: none;
+}
+#no-auth .index-main .main-box .input-list .input-wrap input.captcha-input {
+  display: block;
+  width: 66%;
+  float: left;
+}
+#no-auth .index-main .main-box .input-list .input-wrap span.error {
+  position: absolute;
+  width: auto;
+  /* padding: .3rem; */
+  box-sizing: border-box;
+  line-height: 100%;
+  height: 100%;
+  right: .2rem;
+  top: 50%;
+  margin-top: -0.12rem;
+  color: #c33;
+  font-size: .24rem;
+}
+#no-auth .index-main .main-box .input-list .input-wrap .captcha-img {
+  width: 1.6rem;
+  height: .8rem;
+  position: absolute;
+  background: #fbfbfb;
+  right: .08rem;
+  top: 50%;
+  margin-top: -0.4rem;
+  cursor: pointer;
+}
+#no-auth .index-main .main-box .input-list .btn-submit {
+  display: block;
+  width: 100%;
+  height: .8rem;
+  line-height: .8rem;
+  text-align: center;
+  font-size: .26rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  background: #a5c5f5;
+  border: .02rem solid #a5c5f5;
+  border-top: 0;
+  box-sizing: border-box;
+}
+#no-auth .index-main .main-box .forget-passwd {
+  display: block;
+  width: 2.4rem;
+  height: .6rem;
+  line-height: .6rem;
+  text-align: center;
+  color: #888;
+  margin: 0 auto;
+}

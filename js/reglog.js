@@ -7,15 +7,39 @@ define('reglog',function(require){
 		email:null,
 		apass:null,
 		bpass:null,
-		vpass:null
+		vpass:null,
+		nickName:null
 	};
 
 	regex = {
 		email:/^([a-zA-Z0-9_.\-])+@(([a-zA-Z0-9\-])+.)+([a-zA-Z]{2,4})+$/,
-		pass:/^[^\d\.][0-9|A-Z|a-z]{5,16}/
+		pass:/^[^\d\.][0-9|A-Z|a-z]{5,16}/,
+		nickName:/[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im
 	};
 
 	regFun = {
+		init:function(){
+			regFun.blurEvents([$('.email'),$('.apass'),$('.bpass'),$('.vpass')]);
+			regFun.regEvent();
+			regFun.logEvent();
+			regFun.checkNickName();
+			$('input.reg-username').focus();
+		},
+
+		checkNickName:function(){
+			$('.reg-username').on('blur',function(){
+				self = $(this);
+				if(self.val() == ""){
+					self.removeClass('error').addClass('error');
+				}else if(regex.nickName.test(self.val())){
+					self.removeClass('error').addClass('error');
+				}else{
+					self.removeClass('error').addClass('right');
+					val.nickName = self.val();
+				}
+			});
+		},
+
 		checkFun:function(obj,regex,oVal){
 
 			if(!regex.test($(obj).val())){
@@ -57,9 +81,19 @@ define('reglog',function(require){
 			});	
 		},
 
-		addUserTab:function(){
-			$('.top').append(t.tpl.userTab);
+		addUserTab:function(uid,name){
+			var userTab = "<div class=\"user-tab\">\
+					<div class=\"user-info\">\
+						<a href=\"http://www.nostory.cn/user/info.html?userId="+ uid +"\" class=\"user-link\">"+ name +"</a>\
+					</div>\
+					<div class=\"log-out\">\
+						<a href=\"javascript:;\" class=\"log-out-btn\">退出</a>\
+					</div>\
+				</div>";
+
+			$('.top').append(userTab);
 			$('.sign-log').remove();
+			regFun.logOut();
 		},
 
 		regEvent:function(){
@@ -71,7 +105,7 @@ define('reglog',function(require){
 							data:{
 								eMail:val.email,
 								passWd:md5.md5(val.bpass),
-								nickName:null,
+								nickName:val.nickName
 							},
 							dataType:'json',
 							success:function(r){
@@ -79,7 +113,7 @@ define('reglog',function(require){
 									$.toast(r.data.msg);
 									$('.sunrise').click();
 									setTimeout(function(){
-										window.location = 'http://www.nostory.cn/i/square.html';
+										// window.location = 'http://www.nostory.cn/i/square.html';
 									},1500);
 									
 								}else{
@@ -112,7 +146,7 @@ define('reglog',function(require){
 								if(r.data.code=='0'){
 									$.toast(r.data.msg);
 									$('.sunrise').click();
-									regFun.addUserTab();		
+									// regFun.addUserTab(r.data.userinfo.uid,r.data.userinfo.name);
 								}else{
 									$.toast(r.data.msg);
 									$('input').val(' ').blur();
@@ -126,17 +160,26 @@ define('reglog',function(require){
 					$('.error').focus();
 				}
 			});
+		},
+
+		logOut:function(){
+			$('.log-out-btn').off('click').on('click',function(){
+				$.clearCookie();
+				window.location = 'http://www.nostory.cn';
+			});
 		}
 	};
 
 	init = function(){
-		regFun.blurEvents([$('.email'),$('.apass'),$('.bpass'),$('.vpass')]);
-		regFun.regEvent();
-		regFun.logEvent();
-		$('input.email').focus();
+		// regFun.blurEvents([$('.email'),$('.apass'),$('.bpass'),$('.vpass')]);
+		// regFun.regEvent();
+		// regFun.logEvent();
+		regFun.init();
+		
 	}
 
 	return{
-		init:init
+		init:init,
+		regFun:regFun
 	}
 });

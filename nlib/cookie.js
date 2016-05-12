@@ -7,11 +7,13 @@ var sId = null,
 	uId = null;
 
 exports.init = function(req,res){
-	if(req.url.substr(0,7) == '/cookie'){
-		if(getCookie(req,res)){
+	var cookieSID = getCookie(req,res);
+	if(req.url == '/cookie'){
+		if(cookieSID){
 			returnCookie(req,res);
 		}
 	}
+	return cookieSID;
 }
 
 getCookie = function(req,res){
@@ -20,9 +22,8 @@ getCookie = function(req,res){
     	var parts = Cookie.split("=");
     	Cookies[parts[0].trim()] = (parts[1]||''.trim());
     })
-    console.log("cookie:",Cookies);
-    sId = Cookies.SID;
-    return sId;
+    console.log("cookieInCookie:",Cookies);
+    return Cookies;
     
 };
 

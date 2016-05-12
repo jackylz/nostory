@@ -3,7 +3,7 @@
     padding: 0;
 }
 html,body{
-    font-family: sans-serif,'Microsoft YaHei',arial;
+    font-family: 'Microsoft YaHei',sans-serif,arial;
     font-size: 14px;
     box-sizing: border-box;
     position: relative;

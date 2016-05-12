@@ -1,0 +1,497 @@
+.icon {
+  background: url(../images/sprite.png) no-repeat;
+}
+.user-wrap {
+  position: relative;
+  width: 960px;
+  min-height: 340px;
+  margin: 80px auto 0;
+  padding: 20px 0 50px;
+}
+.user-wrap .user-content {
+  display: inline-block;
+  width: 600px;
+}
+.user-wrap .user-content .user-card {
+  width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 #f2f4f5;
+  padding: 20px 25px 10px;
+  box-sizing: border-box;
+}
+.user-wrap .user-content .user-name {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+}
+.user-wrap .user-content .user-name .user-name-span {
+  font-weight: 700;
+  color: #222;
+  font-size: 20px;
+}
+.user-wrap .user-content .user-name .relation-btn {
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 132px;
+  width: 70px;
+  height: 26px;
+  line-height: 24px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+.user-wrap .user-content .user-name .relation-btn.to-fellow {
+  color: #a5c5f5;
+  border: 1px solid #a5c5f5;
+}
+.user-wrap .user-content .user-name .relation-btn.to-fellow:hover {
+  background: #5588dd;
+  color: #fff;
+  border: 1px solid #5588dd;
+}
+.user-wrap .user-content .user-name .relation-btn.has-fellowed {
+  color: #888;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+}
+.user-wrap .user-content .user-name .relation-btn.relation-friends {
+  color: #3e5e00;
+  background: #8ab923;
+  background: linear-gradient(to bottom, #adda4d, #86b846);
+  border: 1px solid #6d8f29;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+.user-wrap .user-content .user-info {
+  width: 100%;
+  min-height: 160px;
+  padding: 5px 0;
+  box-sizing: border-box;
+}
+.user-wrap .user-content .user-info .avatar {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: top;
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+}
+.user-wrap .user-content .user-info .user-info-list {
+  display: inline-block;
+  width: 425px;
+  float: right;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.user-wrap .user-content .user-info .user-info-list .li {
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.user-wrap .user-content .user-info .user-info-list .li .label {
+  color: #999;
+}
+.user-wrap .user-content .user-info .user-info-list .li .u-data {
+  color: #000;
+  margin-right: 15px;
+}
+.user-wrap .user-content .user-info .user-info-list .li .u-data.username {
+  font-weight: 700;
+  color: #222;
+  font-size: 20px;
+}
+.user-wrap .user-content .user-info .user-info-list .change-btn {
+  width: 100%;
+  height: 22px;
+}
+.user-wrap .user-content .user-info .user-info-list .change-btn a,
+.user-wrap .user-content .user-info .user-info-list .change-btn a:visited {
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  color: #999;
+  font-size: 12px;
+  margin-right: 10px;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+}
+.user-wrap .user-content .user-info .user-info-list .change-btn a:hover {
+  color: #a5c5f5;
+  border: 1px solid #a5c5f5;
+}
+.user-wrap .user-content .user-tag {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  padding: 5px 0;
+  box-sizing: border-box;
+}
+.user-wrap .user-content .user-tag .tag {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 30px;
+  background: #f2f2f2;
+  text-shadow: 0 1px 0 #fff;
+  text-align: center;
+  line-height: 30px;
+  color: #333;
+  font-weight: 800;
+  border: 1px solid #f2f2f2;
+  margin-right: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.user-wrap .user-content .user-tag .tag i {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 10px;
+  margin-left: 4px;
+}
+.user-wrap .user-content .user-tag .tag i.down-arrow {
+  background-position: -388px -472px;
+}
+.user-wrap .user-content .user-tag .tag i.up-arrow {
+  background-position: -388px -463px;
+}
+.user-wrap .user-content .user-tag .tag.tag-add {
+  text-indent: -15px;
+}
+.user-wrap .user-content .user-tag .tag:hover {
+  border-color: #d5d5d5;
+}
+.user-wrap .user-content .user-post-area {
+  width: 600px;
+  margin: 20px 0 5px;
+}
+.user-wrap .user-content .user-post-area .post-title {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #ddd;
+  border-radius: 4px 4px 0 0;
+  box-sizing: border-box;
+}
+.user-wrap .user-content .user-post-area .post-title ul li {
+  width: auto;
+  height: 46px;
+  line-height: 46px;
+  font-size: 14px;
+  color: #666;
+  padding: 0 20px;
+  float: left;
+  font-weight: 900;
+}
+.user-wrap .user-content .user-post-area .post-title ul li .data-value {
+  vertical-align: middle;
+  color: #999;
+  font-weight: normal;
+}
+.user-wrap .user-content .user-post-area .li-content {
+  width: 100%;
+  min-height: 200px;
+  border: 1px solid #ddd;
+  border-top: 0;
+  border-radius: 0 0 4px 4px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.user-wrap .user-content .user-post-area .li-content .li-box {
+  width: 100%;
+  min-height: 100px;
+  padding: 20px 10px 0;
+  border-bottom: 1px solid #f7f7f7;
+  box-sizing: border-box;
+}
+.user-wrap .user-content .user-post-area .li-content .li-box .value-index {
+  display: inline-block;
+  width: 46px;
+  height: 38px;
+  line-height: 20px;
+  padding: 2px;
+  color: #5588dd;
+  text-align: center;
+  border-radius: 4px;
+  background: #eff6fa;
+}
+.user-wrap .user-content .user-post-area .li-content .li-box .value-index .value-num {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+.user-wrap .user-content .user-post-area .li-content .li-box .value-index .value-desc {
+  display: block;
+  width: 100%;
+  font-weight: normal;
+  font-size: 12px;
+}
+.user-wrap .user-content .user-post-area .li-content .li-box .article-box {
+  display: inline-block;
+  width: 500px;
+  min-height: 60px;
+  float: right;
+}
+.user-wrap .user-content .user-post-area .li-content .li-box .article-box a.article-title,
+.user-wrap .user-content .user-post-area .li-content .li-box .article-box a:visited {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  color: #5588dd;
+  margin-bottom: 8px;
+}
+.user-wrap .user-content .user-post-area .li-content .li-box .article-box .article-desc {
+  font-size: 14px;
+  color: #888;
+}
+.user-wrap .user-content .user-post-area .li-content .li-box .article-box .article-desc p {
+  width: 500px;
+  line-height: 18px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.user-wrap .user-content .user-post-area .li-content .user-load-more {
+  display: block;
+  width: 120px;
+  height: 30px;
+  line-height: 28px;
+  text-align: center;
+  font-weight: 600;
+  color: #a5c5f5;
+  border: 1px solid #a5c5f5;
+  border-radius: 4px;
+  margin: 10px auto 0;
+  box-sizing: border-box;
+}
+.user-wrap .user-content .user-post-area .li-content .user-load-more:hover {
+  border-color: #5588dd;
+  background: #5588dd;
+  color: #fff;
+}
+.user-wrap .user-nav {
+  display: inline-block;
+  position: fixed;
+  width: 360px;
+  min-height: 300px;
+  top: 100px;
+}
+.user-wrap .user-nav ul {
+  float: right;
+}
+.user-wrap .user-nav ul li {
+  display: block;
+  width: 100px;
+  height: 40px;
+  border-left: 4px solid #ddd;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.user-wrap .user-nav ul li a,
+.user-wrap .user-nav ul li a:visited {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 900;
+  color: #666;
+  text-align: center;
+}
+.user-wrap .user-nav ul li a:hover,
+.user-wrap .user-nav ul li a:visited:hover {
+  color: #5588dd;
+}
+.user-wrap .user-nav ul li.active,
+.user-wrap .user-nav ul li:hover {
+  color: #5588dd;
+  border-left: 4px solid #5588dd;
+}
+.set-account .info-change-list {
+  display: inline-block;
+  width: 425px;
+  padding: 0 10px 0 40px;
+  box-sizing: border-box;
+}
+.set-account .info-change-list .li {
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.set-account .info-change-list .li .label {
+  display: inline-block;
+  color: #999;
+}
+.set-account .info-change-list .li .u-data {
+  display: inline-block;
+  position: relative;
+  height: 24px;
+  line-height: 24px;
+  color: #000;
+  margin-right: 15px;
+}
+.set-account .info-change-list .li .u-data.username {
+  font-weight: 700;
+  color: #222;
+  font-size: 20px;
+}
+.set-account .info-change-list .li .u-data .change-btn {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #888;
+  left: 100%;
+  top: 0;
+  cursor: pointer;
+}
+.set-account .info-change-list .li .u-data .change-btn i.icon {
+  display: inline-block;
+  width: 15px;
+  height: 10px;
+  background-size: 308px 250px;
+  background-position: -118px -50px;
+}
+.set-account .info-change-list .li .u-data .change-btn .change-area {
+  position: absolute;
+  display: block;
+  width: 220px;
+  height: 24px;
+  top: 0;
+  left: 100%;
+  line-height: 24px;
+}
+.set-account .info-change-list .li .u-data .change-btn .change-area input {
+  display: inline-block;
+  width: 150px;
+  height: 22px;
+  line-height: 22px;
+  color: #666;
+  text-indent: 12px;
+  font-size: 14px;
+  outline: none;
+  border: 1px solid #ddd;
+}
+.set-account .info-change-list .li .u-data .change-btn .change-area a,
+.set-account .info-change-list .li .u-data .change-btn .change-area a:visited {
+  display: inline-block;
+  width: 32px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: center;
+  box-sizing: border-box;
+}
+.set-account .info-change-list .li .u-data .change-btn .change-area a.confirm-change,
+.set-account .info-change-list .li .u-data .change-btn .change-area a:visited.confirm-change {
+  background: #a5c5f5;
+  border: 1px solid #a5c5f5;
+  color: #fff;
+}
+.set-account .info-change-list .li .u-data .change-btn .change-area a.confirm-change:hover,
+.set-account .info-change-list .li .u-data .change-btn .change-area a:visited.confirm-change:hover {
+  background: #5588dd;
+}
+.set-account .info-change-list .li .u-data .change-btn .change-area a.cancle-change,
+.set-account .info-change-list .li .u-data .change-btn .change-area a:visited.cancle-change {
+  border: 1px solid #ddd;
+  color: #999;
+}
+.set-account .info-change-list .privacy-btn {
+  width: 100%;
+  height: 22px;
+}
+.set-account .info-change-list .privacy-btn a,
+.set-account .info-change-list .privacy-btn a:visited {
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  color: #999;
+  font-size: 12px;
+  margin-right: 10px;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+}
+.set-account .info-change-list .privacy-btn a:hover {
+  color: #a5c5f5;
+  border: 1px solid #a5c5f5;
+}
+.set-password .title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.set-password .input-area {
+  width: 510px;
+  height: 45px;
+  line-height: 45px;
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.set-password .input-area input {
+  width: 240px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 14px;
+  color: #666;
+  margin-left: 10px;
+  vertical-align: middle;
+  outline: none;
+  text-indent: 18px;
+}
+.set-password .input-area .error {
+  vertical-align: middle;
+  font-size: 14px;
+  color: #c33;
+}
+.set-password a,
+.set-password a:visited {
+  display: block;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #a5c5f5;
+  background: #a5c5f5;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 4px;
+  margin-top: 25px;
+}
+.set-password a:hover {
+  background: #5588dd;
+}
+.about-us h1 {
+  font-weight: 900;
+  margin: 20px 0 10px;
+}
+.about-us p {
+  font-size: 14px;
+}
+.about-us a,
+.about-us a:visited {
+  color: #a5c5f5;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>API List - NoStory</title>
+	<link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/images/n.png">
+    <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
+    <style type="text/css">
+    	.wrap{
+    		width: 960px;
+			min-height: 400px;
+			margin: 0 auto;
+		}
+		.title{
+			margin: 20px 0 10px;
+			font-size: 40px;
+		}
+		.line{
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		.line label{
+			display: block;
+			width: 100%;
+			height: 20px;
+			line-height: 20px;
+			font-size: 14px;
+			color: #999;
+		}
+		.line p{
+			display: block;
+			width: 100%;
+			height: auto;
+			line-height: 26px;
+			font-size: 14px;
+			color: #000;
+			padding-left: 20px;
+			box-sizing: border-box;
+		}
+    </style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="title">API LIST</div>
+		<h3>TODO LIST</h3>
+		<div class="line">
+			<label>#1 用户信息修改</label>
+			<p>[API]/changeUserInfo [METHOD]users.changeUserInfo [PARAM]</p>
+		</div>
+		<div class="line">
+			<label>#2 用户隐私</label>
+			<p>Setting : [API]/changePrivacy [METHOD]users.changePrivacy [PARAM]uid</p>
+			<p>*Getting:[API]/getPrivacy [METHOD]users.getPrivacy [PARAM]uid</p>
+		</div>
+		<div class="line">
+			<label>#3 后台管理</label>
+			<p>Accoount : [API]/getUersList,deleteUser [METHOD]users.getUserList,users.deleteUser [PARAM]null,uid [ROLE]admin</p>
+			<p>Article  : [API]/getArticleList,deleteArticle [METHOD]article.getArticleList,article.deleteArticle [PARAM]null,uid [ROLE]admin</p>
+			<p>topArticle  : [API]/getTopArticle,setTopArticle [METHOD]article.getTopArticle,article.setTopArticle [PARAM]aid [ROLE]admin/manager</p>
+		</div>
+		<div class="line">
+			<label>#4 文章评论</label>
+			<p>Add : [API]/addDiscus [METHOD]article.addDiscus [PARAM]cid,aid,uid,content,*replyToId,*replyTo,date [COLLECTION]aricle.find({"discusList"}:[])</p>
+			<p>Delete : [API]/deleteDiscus [METHOD]article.deleteDiscus [PARAM]aid,cid [COLLECTION]aricle.update({"aId":aid},{$pull:{"discusList"}:{"cId":cid}}},fn)</p>
+		</div>
+		<div class="line">
+			<label>#5 获取热门文章</label>
+			<p>Getting : [API]/getHotFeed [METHOD]article.getHotFeed [PARAM]null [COLLECTION]aricle.find().limit(5).sort({"vote":-1})</p>
+		</div>
+		<div class="line">
+			<label>#6 m.nostory.cn</label>
+			<p>Reg&amp;Log : [API]Existed [METHOD]Existed [PARAM]null</p>
+			<p>getTopArticle : [API]/getTopArticle [METHOD]article.getTopArticle [PARAM]null [COLLECTION]topArticle.find()</p>
+		</div>
+		<br>
+		<h3>Node API</h3>
+
+		<br>
+		<h3>Mongodb Collections</h3>
+		<div class="line">
+			<label>用户列表 - users</label>
+			<p>Param /  </p>
+			<p>{"uId" : "10000", "eMail" : "a@qq.com", "passWd" : "6846860684f05029abccc09a53cd66f1", "nickName" : "lin", "avatarUrl":"http://www.nostory.cn/avatar/", "totalVote":"1200", "totalDown":"800", "userTag" : ["体育","前端"], "area":"互联网", "company":"人人公司", "jodTitle":"前端工程师", "college":"北京信息科技大学", "major":"网络工程", "wechat":"lzl519616812", "location":"北京市", "hometown":"福建省", "watchCount":120, "privacy":0, "regDate" : "2016-05-09 03:03:42", "regTimeStamp" : 1462734222661 }</p>
+		</div>
+		<div class="line">
+			<label>关注列表 - fellowing</label>
+			<p>Param /  relation:{0:haven't been friends,1:fellowed each other,friend}</p>
+			<p>{"uId":"10000","fellowingList":[{"uId":"10001","relation":"0"},{"uId":"10002","relation":"1"}]}</p>
+		</div>
+		<div class="line">
+			<label>粉丝列表 - fellowed</label>
+			<p>Param /  relation:{0:haven't been friends,1:fellowed each other,friend}</p>
+			<p>{"uId":"10000","fellowingList":[{"uId":"10001","relation":"0"},{"uId":"10002","relation":"1"}]}</p>
+		</div>
+		<div class="line">
+			<label>文章列表 - article</label>
+			<p>Param / </p>
+			<p>{ "articleId":"20000", "uId" : "10000", "author" : "Lin", "title" : "test article title", "vote":20, "down":10, "content" : "&lt;p&gt;sadfsdafasdfasdfadsf&lt;/p&gt;", "tag" : ["python","Node"], "watchCount":120, "postDate" : "2016-01-08 10:52:30", "discusList":[ {"ownerId":"10001", "ownerName":"dada", "replyTo":"optional", "replyToId":"optional", "content":"discus content.", "date" : "2016-01-08 10:52:30"}, {"ownerId":"10001", "ownerName":"dada", "replyTo":"optional", "replyToId":"optional", "content":"discus content.", "date" : "2016-01-08 10:52:30"} ] }</p>
+		</div>
+		<div class="line">
+			<label>热门文章列表 - hotFeed</label>
+			<p>Param / </p>
+			<p>{ "articleId":"20000", "uId" : "10000", "author" : "Lin", "title" : "test article title", "vote":20, "down":10, "content" : "&lt;p&gt;sadfsdafasdfasdfadsf&lt;/p&gt;", "tag" : ["python","Node"], "watchCount":120, "postDate" : "2016-01-08 10:52:30"}</p>
+		</div>
+		<div class="line">
+			<label>置顶主题表 - topArticle</label>
+			<p>Param / </p>
+			<p>{ "articleId":"20000", "uId" : "10000", "author" : "Lin", "title" : "test article title", "vote":20, "down":10, "content" : "&lt;p&gt;sadfsdafasdfasdfadsf&lt;/p&gt;", "tag" : ["python","Node"], "watchCount":120, "imgUrl":"http://www.nostory.cn/", "postDate" : "2016-01-08 10:52:30"}</p>
+		</div>
+		<div class="line">
+			<label>管理员列表 - admin</label>
+			<p>Param /  </p>
+			<p>{"name":"lin", "passwd":"", "role":""}</p>
+		</div>
+		<br>
+
+		<h3>Mongodb Query</h3>
+		<div class="line">
+			<label>关注列表 - db.fellowing.insert</label>
+			<p>db.fellowing.insert({"uId":"","fellowingList":[{"uId":"","relation":"","nickName":"","avatarUrl":"","userTag":[]}]})</p>
+		</div>
+		<div class="line">
+			<label>粉丝列表 - db.fellowed.insert</label>
+			<p>db.fellowed.insert({"uId":"","fellowedList":[{"uId":"","relation":"","nickName":"","avatarUrl":"","userTag":[]}]})</p>
+		</div>
+	</div>
+</body>
+</html>

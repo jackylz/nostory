@@ -91,25 +91,6 @@
                         color: @mainColor; 
                     }
                 }
-                .reflection{
-                    position: absolute;
-                    height: 50px;
-                    width: 97px;
-                    line-height: 50px;
-                    text-align: center;
-                    font-size: 10px;
-                    color:#fff;
-                    top:100%;
-                    z-index: 200;
-                    margin-top: 10px;
-                    transition:font-size .3s ease-out;
-                    -webkit-transition:font-size .3s ease-out;
-                    -moz-transition:font-size .3s ease-out;
-                    -o-transition:font-size .3s ease-out;
-                    &:hover{
-                        font-size: 18px;
-                    }
-                }
             }
             @media only screen and (min-width: 400px) and (max-width: 780px){
                 ul.nav-li{
@@ -181,12 +162,12 @@
             .user-tab{
                 display: inline-block;
                 position: relative;
-                width: 120px;
+                width: 200px;
                 height: 45px;
                 float: right;
                 .user-info{
                     display: inline-block;
-                    width: 80px;
+                    width: auto;
                     height: 45px;
                     white-space:nowrap; 
                     overflow:hidden; 
@@ -209,6 +190,7 @@
                     width: auto;
                     height: 45px;
                     line-height: 46px;
+                    padding-left: 15px;
                     a,a:visited{
                         color:#bbb;
                     }
@@ -223,9 +205,10 @@
     .sea-index{
         display: block;
         position: relative;
-        min-width: 980px;
-        min-height: 630px;
-        margin:45px auto 0;
+        width: 100%;
+        height: 100%;
+        padding-top: 45px;
+        box-sizing: border-box;
         background: url(http://www.nostory.cn/images/sea.jpg) no-repeat;
         background-size: 100%;
         .text-index{
@@ -260,7 +243,7 @@
             margin-left: 6%;
             margin-bottom: 30px;
             .n-left-wrap{
-                height: auto;
+                min-height: 100px;
                 position: relative;
                 font-size: 14px;
                 padding:10px 20px 40px;
@@ -318,6 +301,68 @@
                         }
                     }
                 }
+                .content{
+                    width: 750px;
+                    line-height: 16px;
+                    margin: 0 auto 10px;
+                    p{
+                        width: 680px;
+                        line-height: 16px;
+                        font-size: 14px;
+                        word-break:break-all; 
+                        word-wrap:break-word;
+                    }
+                }
+                .vote-area{
+                    display: block;
+                    position: absolute;
+                    width: 38px;
+                    top: 10px;
+                    right: 20px;
+                    .vote-box{
+                        display: block;
+                        width: 38px;
+                        height: 44px;
+                        background: #eff6fa;
+                        color: #698ebf;
+                        font-size: 12px;
+                        margin-top: 10px;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        &:hover{
+                            box-shadow: 0px 4px 10px 1px rgba(0, 0, 0,.2); 
+                        }
+                        span{
+                            display: block;
+                            width: 100%;
+                            height: 20px;
+                            line-height: 20px;
+                            text-align: center;
+                            font-size: 12px;
+                            font-weight: 600;
+                        }
+                        i{
+                            display: block;
+                            width: 20px;
+                            height: 12px;
+                            margin: 0 auto;
+                            background: url(http://www.nostory.cn/images/sprite.png) no-repeat;
+                        }
+                        &.vote-up{
+                            padding-top:10px;
+                            i{
+                                background-position: -216px -78px;  
+                            }
+                            
+                        }
+                        &.vote-down{
+                            padding-top:5px;
+                            i{
+                                background-position: -242px -78px; 
+                            }
+                        }
+                    }
+                }
                 .show-btn{
                     display: block;
                     position: absolute;
@@ -342,6 +387,8 @@
                 line-height: 38px;
                 text-align: center;
                 border:1px solid #ddd;
+                background: @mainColor;
+                color: #fff;
                 cursor: pointer;
                 transition:all .3s ease-out;
                 -webkit-transition:all .3s ease-out;
@@ -375,15 +422,142 @@
                 -webkit-transition:all .3s ease-out;
                 -moz-transition:all .3s ease-out;
                 -o-transition:all .3s ease-out;
-                &.s-link{
+                &.n-right-top{
+                    height: 160px;
+                    margin-top: 4px;
+                }
+                &.user-box{
                     padding: 0;
+                    .user-info{
+                        width: 100%;
+                        height: 120px;
+                        border-bottom: 1px solid #ddd;
+                        .user-info-box{
+                            width: 100%;
+                            height: 80px;
+                            border-bottom: 1px solid #ddd;
+                            padding: 10px 20px;
+                            box-sizing: border-box;
+                            img{
+                                display: inline-block;
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 4px;
+                            }
+                            .user-info-detail{
+                                display: inline-block;
+                                width: 140px;
+                                height: 60px;
+                                float: right;
+                                div{
+                                    display: block;
+                                    width: 100%;
+                                    height: 20px;
+                                    line-height: 20px;
+                                    font-size: 14px;
+                                    color: #888;
+                                    box-shadow: 0 1px 1px rgb(247, 247, 247);
+                                    box-sizing: border-box;
+                                    &.div-last{box-shadow: 0 0 0 rgb(255, 255, 255);}
+                                    &.user-name{
+                                        a,a:visited{
+                                            color: @mainColor;
+                                        }
+                                    }
+                                    &.user-id{
+                                        span{
+                                            color: #666;
+                                            margin-left: 5px;
+                                        }
+                                    }
+                                    &.user-tag{
+                                        border-bottom: 0;
+                                        p.tag{
+                                            display: inline-block;
+                                            width: auto;
+                                            height: 18px;
+                                            line-height: 16px;
+                                            font-size: 14px;
+                                            text-align: center;
+                                            color: @mainColor;
+                                            border: 1px solid @mainColor;
+                                            border-radius: 12px;
+                                            padding: 0 2px;
+                                            box-sizing: border-box;
+                                            margin: 2px 5px 0 0;
+                                            &:hover{
+                                                background: @mainColor;
+                                                color: #fff;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .user-info-list{
+                            li{
+                                display: block;
+                                position: relative;
+                                width: 82px;
+                                height: 40px;
+                                float: left;
+                                border-right: 1px solid #ddd;
+                                &.li-last{
+                                    float: right;
+                                    border-right: 0;
+                                }
+                                a{
+                                    display: inline-block;
+                                    width: 100%;
+                                    height: 100%;
+                                    span{
+                                        display: block;
+                                        width: 60px;
+                                        height: 20px;
+                                        line-height: 20px;
+                                        font-size: 12px;
+                                        text-align: center;
+                                        color: #888;
+                                        margin:0 auto;
+                                        &.data{
+                                            color: #555;
+                                            font-size: 16px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                a,a:visited{
+                    display: block;
+                    color: #000;
+                    font-size: 14px; 
+                    &.add-post{
+                        width: 100%;
+                        height: 40px;
+                        cursor: pointer;
+                        text-align: center;
+                        font-weight: bold;
+                        line-height: 40px;
+                        background: @mainColor;
+                        color: #fff;
+                        &:hover{
+                            background: @hoverColor;
+                        }
+                    }
+                    &.a-title{
+                        width: 100%;
+                        height: 20px;
+                        line-height: 20px;
+                        margin-bottom: 4px;
+                        &:hover{
+                            color: @mainColor;
+                        }
+                    }   
                 }
                 &:hover{
                     box-shadow: 0px 5px 15px 1px rgba(0, 0, 0,.2); 
-                }
-                &.n-right-top{
-                    height: 40px;
-                    margin-top: 4px;
                 }
                 &.n-right-mid{
                     min-height: 320px;
@@ -411,28 +585,6 @@
                     &.last{
                        border: 0; 
                     }
-                }
-                a,a:visited{
-                    display: block;
-                    color: #000;
-                    font-size: 14px; 
-                    &.add-post{
-                        width: 100%;
-                        height: 100%;
-                        cursor: pointer;
-                        text-align: center;
-                        font-weight: bold;
-                        line-height: 40px;
-                    }
-                    &.a-title{
-                        width: 100%;
-                        height: 20px;
-                        line-height: 20px;
-                        margin-bottom: 4px;
-                        &:hover{
-                            color: @mainColor;
-                        }
-                    }   
                 }
             }    
         }
@@ -621,18 +773,83 @@
 .publish{
     display: block;
     position: relative;
-    width: 980px;
+    width: 750px;
     height: 580px;
     margin: 0 auto;
     margin-top: 70px;
+    .title-area{
+        display: block;
+        width: 100%;
+        margin: 20px auto 10px; 
+        input{
+            width: 100%;
+            height: 100%;
+            line-height: 40px;
+            font-size: 20px;
+            text-indent: 30px;
+            outline: none;
+        }
+    }
+    .tag-area{
+        width: 100%;
+        height: 20px;
+        margin:10px auto;
+        .add-tag-area{
+            display: inline-block;
+            .tag-input{
+                text-indent: 5px;
+                margin-right: 5px;
+                outline: none;
+            }
+            .tag-confirm{
+                color: @mainColor;
+                font-size: 12px;
+                margin-right: 3px;
+                cursor: pointer;
+            }
+            .tag-cancel{
+                color: #999;
+                font-size: 12px;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+        .tag{
+            display: inline-block;
+            width: auto;
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            &.tag-name{
+                line-height: 18px;
+                border: 1px solid @mainColor;
+                border-radius: 12px;
+                color: @mainColor;
+                padding: 0 5px;
+                margin-right: 5px;
+                box-sizing: border-box;
+                &:hover{
+                    background: @mainColor;
+                    color: #fff;
+                }
+            }
+            &.tag-add{
+                font-size: 12px;
+                text-decoration: underline;
+                color: #999;
+
+            }
+        }
+    }
     .post-area{
         display: block;
         position: absolute;
         width: 300px;
         height: 40px;
-        margin-top: 20px;
+        margin: 20px 0;
         right: 0;
-        .char-count,.reset-btn,.add-btn{
+        .reset-btn,.add-btn{
             display: inline-block;
             width: 80px;
             height: 40px;
@@ -641,13 +858,8 @@
             text-align: center;
             border-radius: 4px;
         }
-        .char-count{
-            width: 120px;
-            height: 40px;
-            color: #888;
-            font-size: 14px;
-        }
         .reset-btn{
+            margin-left: 120px;
             font-size: 18px;
             background: #eee;
             cursor: pointer;

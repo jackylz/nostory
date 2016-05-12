@@ -87,25 +87,6 @@
   height: 100%;
   color: #a5c5f5;
 }
-.container .header .top .nav-logo .reflection {
-  position: absolute;
-  height: 50px;
-  width: 97px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 10px;
-  color: #fff;
-  top: 100%;
-  z-index: 200;
-  margin-top: 10px;
-  transition: font-size 0.3s ease-out;
-  -webkit-transition: font-size 0.3s ease-out;
-  -moz-transition: font-size 0.3s ease-out;
-  -o-transition: font-size 0.3s ease-out;
-}
-.container .header .top .nav-logo .reflection:hover {
-  font-size: 18px;
-}
 @media only screen and (min-width: 400px) and (max-width: 780px) {
   .container .header .top ul.nav-li {
     width: 240px;
@@ -175,13 +156,13 @@
 .container .header .top .user-tab {
   display: inline-block;
   position: relative;
-  width: 120px;
+  width: 200px;
   height: 45px;
   float: right;
 }
 .container .header .top .user-tab .user-info {
   display: inline-block;
-  width: 80px;
+  width: auto;
   height: 45px;
   white-space: nowrap;
   overflow: hidden;
@@ -205,6 +186,7 @@
   width: auto;
   height: 45px;
   line-height: 46px;
+  padding-left: 15px;
 }
 .container .header .top .user-tab .log-out a,
 .container .header .top .user-tab .log-out a:visited {
@@ -217,9 +199,10 @@
 .container .sea-index {
   display: block;
   position: relative;
-  min-width: 980px;
-  min-height: 630px;
-  margin: 45px auto 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 45px;
+  box-sizing: border-box;
   background: url(http://www.nostory.cn/images/sea.jpg) no-repeat;
   background-size: 100%;
 }
@@ -255,7 +238,7 @@
   margin-bottom: 30px;
 }
 .container .nostory .n-left .n-left-wrap {
-  height: auto;
+  min-height: 100px;
   position: relative;
   font-size: 14px;
   padding: 10px 20px 40px;
@@ -314,6 +297,67 @@
 .container .nostory .n-left .n-left-wrap .info ul.tag-name li:hover a {
   color: #fff;
 }
+.container .nostory .n-left .n-left-wrap .content {
+  width: 750px;
+  line-height: 16px;
+  margin: 0 auto 10px;
+}
+.container .nostory .n-left .n-left-wrap .content p {
+  width: 680px;
+  line-height: 16px;
+  font-size: 14px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.container .nostory .n-left .n-left-wrap .vote-area {
+  display: block;
+  position: absolute;
+  width: 38px;
+  top: 10px;
+  right: 20px;
+}
+.container .nostory .n-left .n-left-wrap .vote-area .vote-box {
+  display: block;
+  width: 38px;
+  height: 44px;
+  background: #eff6fa;
+  color: #698ebf;
+  font-size: 12px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.container .nostory .n-left .n-left-wrap .vote-area .vote-box:hover {
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
+}
+.container .nostory .n-left .n-left-wrap .vote-area .vote-box span {
+  display: block;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+.container .nostory .n-left .n-left-wrap .vote-area .vote-box i {
+  display: block;
+  width: 20px;
+  height: 12px;
+  margin: 0 auto;
+  background: url(http://www.nostory.cn/images/sprite.png) no-repeat;
+}
+.container .nostory .n-left .n-left-wrap .vote-area .vote-box.vote-up {
+  padding-top: 10px;
+}
+.container .nostory .n-left .n-left-wrap .vote-area .vote-box.vote-up i {
+  background-position: -216px -78px;
+}
+.container .nostory .n-left .n-left-wrap .vote-area .vote-box.vote-down {
+  padding-top: 5px;
+}
+.container .nostory .n-left .n-left-wrap .vote-area .vote-box.vote-down i {
+  background-position: -242px -78px;
+}
 .container .nostory .n-left .n-left-wrap .show-btn {
   display: block;
   position: absolute;
@@ -337,6 +381,8 @@
   line-height: 38px;
   text-align: center;
   border: 1px solid #ddd;
+  background: #a5c5f5;
+  color: #fff;
   cursor: pointer;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
@@ -371,15 +417,144 @@
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
 }
-.container .nostory .n-right div.shadow.s-link {
+.container .nostory .n-right div.shadow.n-right-top {
+  height: 160px;
+  margin-top: 4px;
+}
+.container .nostory .n-right div.shadow.user-box {
   padding: 0;
+}
+.container .nostory .n-right div.shadow.user-box .user-info {
+  width: 100%;
+  height: 120px;
+  border-bottom: 1px solid #ddd;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box {
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box img {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box .user-info-detail {
+  display: inline-block;
+  width: 140px;
+  height: 60px;
+  float: right;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box .user-info-detail div {
+  display: block;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #888;
+  box-shadow: 0 1px 1px #f7f7f7;
+  box-sizing: border-box;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box .user-info-detail div.div-last {
+  box-shadow: 0 0 0 #ffffff;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box .user-info-detail div.user-name a,
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box .user-info-detail div.user-name a:visited {
+  color: #a5c5f5;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box .user-info-detail div.user-id span {
+  color: #666;
+  margin-left: 5px;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box .user-info-detail div.user-tag {
+  border-bottom: 0;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box .user-info-detail div.user-tag p.tag {
+  display: inline-block;
+  width: auto;
+  height: 18px;
+  line-height: 16px;
+  font-size: 14px;
+  text-align: center;
+  color: #a5c5f5;
+  border: 1px solid #a5c5f5;
+  border-radius: 12px;
+  padding: 0 2px;
+  box-sizing: border-box;
+  margin: 2px 5px 0 0;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-box .user-info-detail div.user-tag p.tag:hover {
+  background: #a5c5f5;
+  color: #fff;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-list li {
+  display: block;
+  position: relative;
+  width: 82px;
+  height: 40px;
+  float: left;
+  border-right: 1px solid #ddd;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-list li.li-last {
+  float: right;
+  border-right: 0;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-list li a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-list li a span {
+  display: block;
+  width: 60px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: #888;
+  margin: 0 auto;
+}
+.container .nostory .n-right div.shadow.user-box .user-info .user-info-list li a span.data {
+  color: #555;
+  font-size: 16px;
+}
+.container .nostory .n-right div.shadow a,
+.container .nostory .n-right div.shadow a:visited {
+  display: block;
+  color: #000;
+  font-size: 14px;
+}
+.container .nostory .n-right div.shadow a.add-post,
+.container .nostory .n-right div.shadow a:visited.add-post {
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  line-height: 40px;
+  background: #a5c5f5;
+  color: #fff;
+}
+.container .nostory .n-right div.shadow a.add-post:hover,
+.container .nostory .n-right div.shadow a:visited.add-post:hover {
+  background: #5588dd;
+}
+.container .nostory .n-right div.shadow a.a-title,
+.container .nostory .n-right div.shadow a:visited.a-title {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+.container .nostory .n-right div.shadow a.a-title:hover,
+.container .nostory .n-right div.shadow a:visited.a-title:hover {
+  color: #a5c5f5;
 }
 .container .nostory .n-right div.shadow:hover {
   box-shadow: 0px 5px 15px 1px rgba(0, 0, 0, 0.2);
-}
-.container .nostory .n-right div.shadow.n-right-top {
-  height: 40px;
-  margin-top: 4px;
 }
 .container .nostory .n-right div.shadow.n-right-mid {
   min-height: 320px;
@@ -408,32 +583,6 @@
 }
 .container .nostory .n-right div.shadow .article-list.last {
   border: 0;
-}
-.container .nostory .n-right div.shadow a,
-.container .nostory .n-right div.shadow a:visited {
-  display: block;
-  color: #000;
-  font-size: 14px;
-}
-.container .nostory .n-right div.shadow a.add-post,
-.container .nostory .n-right div.shadow a:visited.add-post {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  text-align: center;
-  font-weight: bold;
-  line-height: 40px;
-}
-.container .nostory .n-right div.shadow a.a-title,
-.container .nostory .n-right div.shadow a:visited.a-title {
-  width: 100%;
-  height: 20px;
-  line-height: 20px;
-  margin-bottom: 4px;
-}
-.container .nostory .n-right div.shadow a.a-title:hover,
-.container .nostory .n-right div.shadow a:visited.a-title:hover {
-  color: #a5c5f5;
 }
 .footer {
   display: block;
@@ -614,20 +763,83 @@
 .publish {
   display: block;
   position: relative;
-  width: 980px;
+  width: 750px;
   height: 580px;
   margin: 0 auto;
   margin-top: 70px;
+}
+.publish .title-area {
+  display: block;
+  width: 100%;
+  margin: 20px auto 10px;
+}
+.publish .title-area input {
+  width: 100%;
+  height: 100%;
+  line-height: 40px;
+  font-size: 20px;
+  text-indent: 30px;
+  outline: none;
+}
+.publish .tag-area {
+  width: 100%;
+  height: 20px;
+  margin: 10px auto;
+}
+.publish .tag-area .add-tag-area {
+  display: inline-block;
+}
+.publish .tag-area .add-tag-area .tag-input {
+  text-indent: 5px;
+  margin-right: 5px;
+  outline: none;
+}
+.publish .tag-area .add-tag-area .tag-confirm {
+  color: #a5c5f5;
+  font-size: 12px;
+  margin-right: 3px;
+  cursor: pointer;
+}
+.publish .tag-area .add-tag-area .tag-cancel {
+  color: #999;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.publish .tag-area .tag {
+  display: inline-block;
+  width: auto;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.publish .tag-area .tag.tag-name {
+  line-height: 18px;
+  border: 1px solid #a5c5f5;
+  border-radius: 12px;
+  color: #a5c5f5;
+  padding: 0 5px;
+  margin-right: 5px;
+  box-sizing: border-box;
+}
+.publish .tag-area .tag.tag-name:hover {
+  background: #a5c5f5;
+  color: #fff;
+}
+.publish .tag-area .tag.tag-add {
+  font-size: 12px;
+  text-decoration: underline;
+  color: #999;
 }
 .publish .post-area {
   display: block;
   position: absolute;
   width: 300px;
   height: 40px;
-  margin-top: 20px;
+  margin: 20px 0;
   right: 0;
 }
-.publish .post-area .char-count,
 .publish .post-area .reset-btn,
 .publish .post-area .add-btn {
   display: inline-block;
@@ -638,13 +850,8 @@
   text-align: center;
   border-radius: 4px;
 }
-.publish .post-area .char-count {
-  width: 120px;
-  height: 40px;
-  color: #888;
-  font-size: 14px;
-}
 .publish .post-area .reset-btn {
+  margin-left: 120px;
   font-size: 18px;
   background: #eee;
   cursor: pointer;

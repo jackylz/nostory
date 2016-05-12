@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>账号设置 - NoStory</title>
+        <link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/images/n.png">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/base.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/user.css">
+        <script type="text/javascript" src="http://www.nostory.cn/js/libs.js"></script>
+        <script type="text/javascript">
+            define.config({map:{
+                "reglog":"http://www.nostory.cn/js/reglog.js",
+                "index":"http://www.nostory.cn/js/index.js",
+                "template":"http://www.nostory.cn/js/template.js",
+                "md5":"http://www.nostory.cn/js/md5.js",
+                "publish": "http://www.nostory.cn/js/publish.js"
+            }});
+        </script>
+        <script type="text/javascript">
+            var cookies = $.getCookie();
+            var flag = cookies?(cookies[1]?true:false):false;
+            if(!flag){
+                window.location = 'http://www.nostory.cn/noAuth.html';
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="top clearfix">
+                    <div class="nav-logo">
+                        <p class="ego"><a href="/">NoStory</a></p>
+                    </div>
+                    <ul class="sign-log">
+                        <li><a href="javascript:void(0);" class="reg-btn">注册</a></li>
+                        <li><a href="javascript:void(0);" class="log-btn">登录</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-wrap">
+                <div class="user-content set-account">
+                    <div class="user-card" style="width: 660px;border:0;">
+                        <div class="user-info">
+                            <div class="avatar"></div>
+                            <div class="info-change-list">
+                                <div class="li">
+                                    <div class="u-data username">
+                                        <span>林振</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <div class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="li">
+                                    <div class="label">行业 : </div>
+                                    <div class="u-data area">
+                                        <span>互联网</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <span class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="li">
+                                    <div class="label">公司 : </div>
+                                    <div class="u-data company">
+                                        <span>人人公司</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <span class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="li">
+                                    <div class="label">职位 : </div>
+                                    <div class="u-data job-title">
+                                        <span>前端开发工程师</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <span class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="li">
+                                    <div class="label">毕业院校 : </div>
+                                    <div class="u-data college">
+                                        <span>北京信息科技大学</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <span class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="li">
+                                    <div class="label">专业 : </div>
+                                    <div class="u-data major">
+                                        <span>网络工程</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <span class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="li">
+                                    <div class="label">微信号 : </div>
+                                    <div class="u-data wechat">
+                                        <span>lzl519616812</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <span class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="li">
+                                    <div class="label">邮箱 : </div>
+                                    <div class="u-data email">
+                                        <span>lin@nostory.cn</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <span class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="li">
+                                    <div class="label">现居地 : </div>
+                                    <div class="u-data location">
+                                        <span>北京市</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <span class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="li">
+                                    <div class="label">家乡 : </div>
+                                    <div class="u-data hometown">
+                                        <span>福建省</span>
+                                        <div class="change-btn">
+                                            <i class="icon"></i>
+                                            <span>修改</span>
+                                            <span class="change-area">
+                                                <input type="text"/><a href="javascript:void(0);" class="confirm-change">确定</a><a href="javascript:void(0);" class="cancle-change">取消</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="privacy-btn">
+                                    <a href="javascript:void(0);" class="privacy-setting">隐私设置</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-nav">
+                    <ul>
+                        <li><a href="http://www.nostory.cn/user/info.html">基本资料</a></li>
+                        <li class="active"><a href="javascript:;">帐号设置</a></li>
+                        <li><a href="http://www.nostory.cn/user/setPwd.html">密码修改</a></li>
+                        <li><a href="http://www.nostory.cn/user/about.html">关于我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sunrise">
+        </div>
+    </body>
+</html>

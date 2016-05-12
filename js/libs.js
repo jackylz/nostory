@@ -10939,6 +10939,7 @@ require.config({
 //loader-config end ***
 //control
 $.extend({
+
     toast: function(_text, callback, time) {
         $(".toast").remove();
         $("body").append("<div class='toast'><p>" + _text + "</p></div>");
@@ -10948,5 +10949,42 @@ $.extend({
                 return callback();
             }
         }, time || 2000);
+    },
+
+    setCookie:function(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    },
+
+    /*
+    * Function getCookie
+    * return [sid,uid]
+    */
+    getCookie:function(){
+      if(document.cookie){
+        return document.cookie.split("=")[1].split("&");
+      }else{
+        return null;
+      }
+    },
+
+    delCookie:function(name){
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null){
+          document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+        }
+    },
+
+    clearCookie:function(){ 
+      var keys=document.cookie.match(/[^ =;]+(?=\=)/g); 
+      if (keys) { 
+        for (var i = keys.length; i--;){
+          document.cookie=keys[i]+"=;domain=.nostory.cn;Path=/;Expries="+new Date(0).toGMTString()
+        }
+      } 
     }
 });

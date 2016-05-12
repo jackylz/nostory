@@ -2,17 +2,34 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>NoStory</title>
-		<link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/favicon.ico">
+		<title>广场 - NoStory</title>
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/images/n.png">
 		<link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
 		<link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/base.css">
+		<script type="text/javascript"> 
+            var ua = navigator.userAgent; 
+            var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+                isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+                isMobile = isIphone || isAndroid;
+            if(isMobile) {
+                location.href = 'http://m.nostory.cn';
+            }
+        </script> 
 		<script type="text/javascript" src="http://www.nostory.cn/js/libs.js"></script>
+		<script type="text/javascript">
+			var cookies = $.getCookie();
+			var flag = cookies?(cookies[1]?true:false):false;
+			if(!flag){
+				window.location = 'http://www.nostory.cn/noAuth.html';
+			}
+		</script>
 		<script type="text/javascript">
 			define.config({map:{
 				"reglog":"http://www.nostory.cn/js/reglog.js",
 				"index":"http://www.nostory.cn/js/index.js",
-				"md5":"http://www.nostory.cn/js/md5.js",
 				"template":"http://www.nostory.cn/js/template.js",
+				"md5":"http://www.nostory.cn/js/md5.js",
 				"publish": "http://www.nostory.cn/js/publish.js"
 			}});
 		</script>
@@ -23,23 +40,121 @@
 				<div class="top clearfix">
 					<div class="nav-logo">
 						<p class="ego"><a href="/">NoStory</a></p>
-						<!-- <p class="reflection">哦</p> -->
 					</div>
-					<ul class="nav-li">
+					<!-- <ul class="nav-li">
 						<li><a href="#">ARTICAL</a></li>
 						<li><a href="#">TAG</a></li>
-					</ul>
+					</ul> -->
 					<ul class="sign-log">
-						<li><a href="javascript:void(0);" class="reg-btn">Sign</a></li>
-						<li><a href="javascript:void(0);" class="log-btn">Log</a></li>
+						<li><a href="javascript:void(0);" class="reg-btn">注册</a></li>
+						<li><a href="javascript:void(0);" class="log-btn">登录</a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="sea-index">
-				<div class="text-index">Come on.</div>
+			<div class="nostory clearfix">
+				<div class="n-left">
+					<!-- <div class="n-left-wrap">
+						<h1>n.title</h1>
+						<div class="info clearfix">
+							<div class="sub-info author-name">作者：<a href="http://www.nostory.cn/user/info.html?userId=">dada</a></div>
+							<div class="sub-info publish-time">发表于：<span>aaaa</span></div>
+							<ul class="sub-info tag-name clearfix">
+							</ul>
+						</div>
+						<div class="content">
+							<p>sdf sda fasdf asdf asdf asd fasd fasd fasd fasdf asd f</p>
+						</div>
+						<div class="vote-area" data-id="">
+							<div class="vote-box vote-up">
+								<i></i>
+								<span class="up-number">10</span>
+							</div>
+							<div class="vote-box vote-down">
+								<span class="down-number">20</span>
+								<i></i>
+							</div>
+						</div>
+					</div> -->
+					<div class="load-more">加载更多</div>
+				</div>
+
+				<div class="n-right">
+					<div class="n-right-top shadow user-box">
+						<div class="user-info">
+							<div class="user-info-box">
+								<img src="http://www.nostory.cn/images/ds.jpg" width="60" height="60" alt="头像">
+								<div class="user-info-detail">
+									<div class="user-name">
+										<a href="http://www.nostory.cn/user/info.html?userId=10000">NoName</a>
+									</div>
+									<div class="user-id">ID :<span>10000</span></div>
+									<div class="user-tag div-last">
+										<!-- <p class="tag">#Nodejs</p>
+										<p class="tag">#程序员</p> -->
+									</div>
+								</div>
+							</div>
+							<ul class="user-info-list">
+								<li>
+									<a href="#" class="fellowing">
+										<span>关注</span>
+										<span class="data">1000</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="article-count">
+										<span>文章</span>
+										<span class="data">1000</span>
+									</a>
+								</li>
+								<li class="li-last">
+									<a href="#" class="fellowed">
+										<span>粉丝</span>
+										<span class="data">1000</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<a href="http://www.nostory.cn/publisher.html" class="add-post">发表文章</a>
+					</div>
+					<div class="n-right-mid shadow">
+						<div class="mid-title">热门文章</div>
+						<div class="link-wrap">
+							<div class="article-list">
+								<a href="javascript:;" class="a-title">文章标题:这是个文章标题</a>
+								<div class="read-author">作者：<span>林振</span></div>
+								<div class="read-num">阅读量：<span>1212</span></div>
+							</div>
+							<div class="article-list">
+								<a href="javascript:;" class="a-title">文章标题:这是个文章标题</a>
+								<div class="read-author">作者：<span>林振</span></div>
+								<div class="read-num">阅读量：<span>1212</span></div>
+							</div>
+							<div class="article-list">
+								<a href="javascript:;" class="a-title">文章标题:这是个文章标题</a>
+								<div class="read-author">作者：<span>林振</span></div>
+								<div class="read-num">阅读量：<span>1212</span></div>
+							</div>
+							<div class="article-list">
+								<a href="javascript:;" class="a-title">文章标题:这是个文章标题</a>
+								<div class="read-author">作者：<span>林振</span></div>
+								<div class="read-num">阅读量：<span>1212</span></div>
+							</div>
+							<div class="article-list">
+								<a href="javascript:;" class="a-title">文章标题:这是个文章标题</a>
+								<div class="read-author">作者：<span>林振</span></div>
+								<div class="read-num">阅读量：<span>1212</span></div>
+							</div>
+							<div class="article-list last">
+								<a href="javascript:;" class="a-title">文章标题:这是个文章标题</a>
+								<div class="read-author">作者：<span>林振</span></div>
+								<div class="read-num">阅读量：<span>1212</span></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="footer">Copyright&nbsp; &copy; &nbsp;2015</div>
 		<div class="sunrise">
 		</div>
 		

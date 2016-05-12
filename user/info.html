@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>基本资料 - NoStory</title>
+        <link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/images/n.png">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/base.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/user.css">
+        <script type="text/javascript" src="http://www.nostory.cn/js/libs.js"></script>
+        <script type="text/javascript">
+            define.config({map:{
+                "reglog":"http://www.nostory.cn/js/reglog.js",
+                "index":"http://www.nostory.cn/js/index.js",
+                "template":"http://www.nostory.cn/js/template.js",
+                "md5":"http://www.nostory.cn/js/md5.js",
+                "publish": "http://www.nostory.cn/js/publish.js",
+                "user": "http://www.nostory.cn/js/user.js"
+            }});
+        </script>
+        <script type="text/javascript">
+            var cookies = $.getCookie();
+            var flag = cookies?(cookies[1]?true:false):false;
+            if(!flag){
+                window.location = 'http://www.nostory.cn/noAuth.html';
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="top clearfix">
+                    <div class="nav-logo">
+                        <p class="ego"><a href="/">NoStory</a></p>
+                    </div>
+                    <ul class="sign-log">
+                        <li><a href="javascript:void(0);" class="reg-btn">注册</a></li>
+                        <li><a href="javascript:void(0);" class="log-btn">登录</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-wrap">
+                <div class="user-content">
+                    <div class="user-card">
+                        <div class="user-name">
+                            <span class="user-name-span">林振</span>
+                            <!-- <div class="relation-btn" data-id="">关注</div> -->
+                        </div>
+                        <div class="user-info">
+                            <div class="avatar"></div>
+                            <div class="user-info-list">
+                                <div class="li">
+                                    <span class="label">行业 : </span>
+                                    <span class="u-data area">互联网</span>
+                                    <span class="label">公司 : </span>
+                                    <span class="u-data company">人人公司</span>
+                                    <span class="label">职位 : </span>
+                                    <span class="u-data job-title">前端开发工程师</span>
+                                </div>
+                                <div class="li">
+                                    <span class="label">毕业院校 : </span>
+                                    <span class="u-data college">北京信息科技大学</span>
+                                    <span class="label">专业 : </span>
+                                    <span class="u-data major">网络工程</span>
+                                </div>
+                                <div class="li">
+                                    <span class="label">微信号 : </span>
+                                    <span class="u-data wechat">lzl519616812</span>
+                                    <span class="label">邮箱 : </span>
+                                    <span class="u-data email">lin@nostory.cn</span>
+                                </div>
+                                <div class="li">
+                                    <span class="label">现居地 : </span>
+                                    <span class="u-data location">北京市</span>
+                                    <span class="label">家乡 : </span>
+                                    <span class="u-data hometown">福建省</span>
+                                </div>
+                                <div class="change-btn">
+                                    <a href="javascript:void(0);" class="privacy-setting">隐私设置</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-tag">
+                            <div class="tag">体育</div>
+                            <div class="tag tag-add">添加标签<i class="icon down-arrow"></i></div>
+                        </div>
+                    </div>
+                    <div class="user-post-area">
+                        <div class="post-title">
+                            <ul>
+                                <li class="l-article">文章<span class="data-value">120</span></li>
+                                <li class="l-fellowing">关注<span class="data-value">20</span></li>
+                                <li class="l-fellowed">粉丝<span class="data-value">20</span></li>
+                            </ul>
+                        </div>
+                        <div class="li-content">
+                            <!-- <div class="li-box">
+                                <div class="value-index">
+                                    <span class="value-num">12</span>
+                                    <span class="value-desc">指数</span>
+                                </div>
+                                <div class="article-box">
+                                    <a href="#" class="article-title">我的室友老是咳嗽，很吵，怎么办？</a>
+                                    <div class="article-desc">以纯机械的方式，要实现走时精准，加上万年历、陀飞轮或三问等复杂功能，让它们稳定…</div>
+                                </div>
+                            </div>
+                            <div class="li-box">
+                                <div class="value-index">
+                                    <span class="value-num">12</span>
+                                    <span class="value-desc">指数</span>
+                                </div>
+                                <div class="article-box">
+                                    <a href="#" class="article-title">我的室友老是咳嗽，很吵，怎么办我的室友老是咳嗽，很吵，怎么办我的室友老是咳嗽，很吵，怎么办</a>
+                                    <div class="article-desc">以纯机械的方式，要实现走时精准，加上万年历、陀飞轮或三问等复杂功能，让它们稳定…</div>
+                                </div>
+                            </div>
+                            <div class="li-box">
+                                <div class="value-index">
+                                    <span class="value-num">12</span>
+                                    <span class="value-desc">指数</span>
+                                </div>
+                                <div class="article-box">
+                                    <a href="#" class="article-title">我的室友老是咳嗽，很吵，怎么办我的室友老是咳嗽，很吵，怎么办我的室友老是咳嗽，很吵，怎么办</a>
+                                    <div class="article-desc">以纯机械的方式，要实现走时精准，加上万年历、陀飞轮或三问等复杂功能，让它们稳定…</div>
+                                </div>
+                            </div> -->
+                            <a href="javascipt:;" class="user-load-more">加载更多</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-nav">
+                    <ul>
+                        <li class="active"><a href="javascript:;">基本资料</a></li>
+                        <li><a href="http://www.nostory.cn/user/setAccount.html">帐号设置</a></li>
+                        <li><a href="http://www.nostory.cn/user/setPwd.html">密码修改</a></li>
+                        <li><a href="http://www.nostory.cn/user/about.html">关于我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                require(["user"],function(_user){
+                    _user.init();
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>密码修改 - NoStory</title>
+        <link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/images/n.png">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/base.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/user.css">
+        <script type="text/javascript" src="http://www.nostory.cn/js/libs.js"></script>
+        <script type="text/javascript">
+            define.config({map:{
+                "reglog":"http://www.nostory.cn/js/reglog.js",
+                "index":"http://www.nostory.cn/js/index.js",
+                "template":"http://www.nostory.cn/js/template.js",
+                "md5":"http://www.nostory.cn/js/md5.js",
+                "publish": "http://www.nostory.cn/js/publish.js",
+                "user": "http://www.nostory.cn/js/user.js",
+            }});
+        </script>
+        <script type="text/javascript">
+            var cookies = $.getCookie();
+            var flag = cookies?(cookies[1]?true:false):false;
+            if(!flag){
+                window.location = 'http://www.nostory.cn/noAuth.html';
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="top clearfix">
+                    <div class="nav-logo">
+                        <p class="ego"><a href="/">NoStory</a></p>
+                    </div>
+                    <ul class="sign-log">
+                        <li><a href="javascript:void(0);" class="reg-btn">注册</a></li>
+                        <li><a href="javascript:void(0);" class="log-btn">登录</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-wrap">
+                <div class="user-content set-password" data-id="">
+                    <div class="title">密码修改</div>
+                    <div class="input-area">
+                        <label for="passWd">请输入原密码</label>
+                        <input type="password" id="passWd" maxlength="16" />
+                    </div>
+                    <div class="input-area">
+                        <label for="newPassWd">请输入新密码</label>
+                        <input type="password" id="newPassWd" maxlength="16" />
+                    </div>
+                    <div class="input-area">
+                        <label for="reNewPassWd">请确认新密码</label>
+                        <input type="password" id="reNewPassWd" maxlength="16" />
+                    </div>
+                    <a href="javascript:;" class="change-passwd">确认修改</a>
+                </div>
+                <div class="user-nav">
+                    <ul>
+                        <li><a href="http://www.nostory.cn/user/info.html">基本资料</a></li>
+                        <li><a href="http://www.nostory.cn/user/setAccount.html">帐号设置</a></li>
+                        <li class="active"><a href="javascript:;">密码修改</a></li>
+                        <li><a href="http://www.nostory.cn/user/about.html">关于我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                require(["user"],function(_user){
+                    _user.init();
+                });
+            });
+        </script>
+    </body>
+</html>
