@@ -71,9 +71,8 @@ define('user',function(require){
                 }else{
                     $.toast("请正确输入密码");
                 }
-            })
-            
-        }
+            }) 
+        },
     };
 
     getInfo = {
@@ -81,6 +80,7 @@ define('user',function(require){
             this.getUserInfo();
             this.getArticleByUid();
             this.getRelation();
+            this.tagEvent();
         },
 
         getUserInfo:function(){
@@ -95,25 +95,42 @@ define('user',function(require){
                 success:function(r){
                     var rs = r.data;
                     if(rs.code == "0"){
-                        var rd = rs.dataList;
-                        var rc = rs.count;
-                        console.log(rc);
-                        $('.user-name-span').text(rd.nickName);
-                        rd.area==""?$('.area').text("未填写"):$('.area').text(rd.area);
-                        rd.avatarUrl==""?null:$('.avatar').css('background-image','url('+rd.avatarUrl+')');
-                        rd.college==""?$('.college').text("未填写"):$('.college').text(rd.college);
-                        rd.company==""?$('.company').text("未填写"):$('.company').text(rd.company);
-                        rd.eMail==""?$('.email').text("未填写"):$('.email').text(rd.eMail);
-                        rd.hometown==""?$('.hometown').text("未填写"):$('.hometown').text(rd.hometown);
-                        rd.wechat==""?$('.wechat').text("未填写"):$('.wechat').text(rd.wechat);
-                        rd.location==""?$('.location').text("未填写"):$('.location').text(rd.location);
-                        rd.major==""?$('.major').text("未填写"):$('.major').text(rd.major);
-                        rd.jobTitle==""?$('.job-title').text("未填写"):$('.job-title').text(rd.jobTitle);
+                        $('.user-name-span').text(rs.dataList.nickName);
+                        if(uid == $.getCookie()[1] || rs.dataList.privacy=='0'){
+                            var rd = rs.dataList;
+                            var rc = rs.count;
+                            rd.area==""?$('.area').text("未填写"):$('.area').text(rd.area);
+                            rd.avatarUrl==""?null:$('.avatar').css('background-image','url('+rd.avatarUrl+')');
+                            rd.college==""?$('.college').text("未填写"):$('.college').text(rd.college);
+                            rd.company==""?$('.company').text("未填写"):$('.company').text(rd.company);
+                            rd.eMail==""?$('.email').text("未填写"):$('.email').text(rd.eMail);
+                            rd.hometown==""?$('.hometown').text("未填写"):$('.hometown').text(rd.hometown);
+                            rd.wechat==""?$('.wechat').text("未填写"):$('.wechat').text(rd.wechat);
+                            rd.location==""?$('.location').text("未填写"):$('.location').text(rd.location);
+                            rd.major==""?$('.major').text("未填写"):$('.major').text(rd.major);
+                            rd.jobTitle==""?$('.job-title').text("未填写"):$('.job-title').text(rd.jobTitle);
 
-                        $('.l-article').find('.data-value').text(rc.articleCount);
-                        $('.l-fellowed').find('.data-value').text(rc.fellowedCount);
-                        $('.l-fellowing').find('.data-value').text(rc.fellowingCount);
+                            $('.l-article').find('.data-value').text(rc.articleCount);
+                            $('.l-fellowed').find('.data-value').text(rc.fellowedCount);
+                            $('.l-fellowing').find('.data-value').text(rc.fellowingCount);
 
+                            var html = "";
+                            if(rd.userTag!=""){
+                                $.each(rd.userTag,function(i,n){
+                                    html += "<div class=\"tag tag-name\">"+ n +"</div>"
+                                });
+                                $('.tag-add').before(html);
+                                getInfo.removeTag();
+                            }
+
+                            if(uid != $.getCookie()[1]){
+                                $('.tag-add').hide();
+                            }
+
+                        }else if(uid != $.getCookie()[1] && rs.dataList.privacy=='1'){
+                            $('.user-info-list').text('您无权查看该用户的个人信息');
+                            $('.user-tag').hide();
+                        }
                     }
                 }
             });
@@ -277,6 +294,63 @@ define('user',function(require){
                 });
             });
         },
+
+        tagEvent:function(){
+            $('.tag-add').off('click').on('click',function(){
+                $('.tag-selector').toggle();
+            });
+
+            $('.tag-selector').find('li').off('click').on('click',function(){
+                var self = $(this);
+                var tagValue = self.text();
+                var html = "";
+                $.ajax({
+                    url:"http://www.nostory.cn/addUserTag",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        "uid":$.getCookie()[1],
+                        "tag":tagValue
+                    },
+                    success:function(r){
+                        var rs = r.data;
+                        if(rs.code == '0'){
+                            console.log(rs);
+                            html = "<div class=\"tag tag-name\">"+ rs.addedTag +"</div>";
+                            $('.tag-add').before(html);
+                            getInfo.removeTag();
+                        }else{
+                            $.toast(rs.msg);
+                        }
+                    }
+                });
+            });
+        },
+
+        removeTag:function(){
+            $('.tag-name').off('click').on('click',function(){
+                var self = $(this);
+                var tagValue = self.text();
+                var html = "";
+                $.ajax({
+                    url:"http://www.nostory.cn/removeUserTag",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        "uid":$.getCookie()[1],
+                        "tag":tagValue
+                    },
+                    success:function(r){
+                        var rs = r.data;
+                        if(rs.code == '0'){
+                            self.remove();
+                        }else{
+                            $.toast(rs.msg);
+                        }
+                    }
+                });
+            });
+        }
     };
 
     init = function(){
@@ -285,6 +359,7 @@ define('user',function(require){
         if(window.location.pathname == '/user/setPwd.html'){
             $('.set-password').attr('data-id',cookieTmp[1]);
             setPasswd.init();
+            $('.user-nav').find('li').eq(0).find('a').attr('href','http://www.nostory.cn/user/info.html?userId='+$.getCookie()[1]);
         }
         if(window.location.pathname == '/user/info.html'){
             getInfo.init();

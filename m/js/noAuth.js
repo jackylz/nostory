@@ -1,4 +1,4 @@
-;(function($){
+;(function(){
 	$(function(){
 		function initRem(callback){
 	        //适配代码 px->rem
@@ -57,7 +57,7 @@
                         <input type=\"text\" placeholder=\"验证码\" class=\"captcha-input\" required/>\
                         <div class=\"captcha-img\"></div>\
                     </div>\
-                    <a href=\"javascript:;\" class=\"btn-submit go-reg\">登陆</a>",
+                    <a href=\"javascript:;\" class=\"btn-submit go-log\">登陆</a>",
         empty : {
         			userName:"<span class=\"error\">请输入用户名</span>",
         			userMail:"<span class=\"error\">请输入邮箱地址</span>",
@@ -85,6 +85,8 @@
 			this.getCaptchaAjax($('.captcha-img'));
 			this.getCaptchaEvent();
 			this.checkFun();
+			this.regEvent();
+			this.logEvent();
 		},
 
 		/*
@@ -195,7 +197,7 @@
 					}else{
 						self.parent().find('.error').remove();
 					}
-					if($('.passwd').val()!=$('.re-passwd').val()){
+					if($('.re-passwd').index() != -1 && ($('.passwd').val()!=$('.re-passwd').val())){
 						self.parent().find('.error').remove();
 						self.parent().append(tpl.error.passwd);
 					}else{
@@ -215,8 +217,64 @@
 			});
 		},		
 
-		regLog:function(){
+		regEvent:function(){
+			$('.go-reg').on('click',function(){
+				$('input').blur();
+				if($('.error').length == 0){
+					console.log('Valid Data.');
+					$.ajax({
+						url:'/signUp',
+						type:'post',
+						data:{
+							eMail:$('.usermail').val(),
+							passWd:md5($('.passwd').val()),
+							nickName:$('.username').val()
+						},
+						dataType:'json',
+						success:function(r){
+							if(r.data.code=='0'){
+								setTimeout(function(){
+									window.location = 'http://m.nostory.cn/';
+								},1500);
+								
+							}else{
+								console.log("r",r);
+							}
+						}
+					});	
+				}else{
+					$('.usermail').focus();
+				}
+			});
+		},
 
+		logEvent:function(){
+			$('.go-log').on('click',function(){
+				$('input').blur();
+				if($('.error').length == 0){
+					$.ajax({
+							url:'/logIn',
+							type:'post',
+							data:{
+								eMail:$('.usermail').val(),
+								passWd:md5($('.passwd').val()),
+							},
+							dataType:'json',
+							success:function(r){
+								if(r.data.code=='0'){
+									setTimeout(function(){
+										window.location = 'http://m.nostory.cn/';
+									},1500);
+								}else{
+									console.log("r",r);
+								}
+							}
+						}
+					);	
+				}else{
+					$('.usermail').focus();
+				}
+			});
 		},
 	};
-})(jQuery)
+})()

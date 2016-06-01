@@ -1,0 +1,189 @@
+#m-article {
+  width: 100%;
+  background: #f7f7f7;
+}
+#m-article .wrap {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+  padding-top: .4rem;
+  border-bottom: 0.08rem solid #5588dd;
+}
+#m-article .wrap .title {
+  display: block;
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  text-indent: .4rem;
+  font-weight: 600;
+  font-size: .4rem;
+  color: #a5c5f5;
+  border-left: .08rem solid #a5c5f5;
+}
+#m-article .wrap .desc-box {
+  display: block;
+  width: 100%;
+  height: .5rem;
+  line-height: .5rem;
+  padding-left: .48rem;
+  box-sizing: border-box;
+}
+#m-article .wrap .desc-box .desc {
+  display: inline-block;
+  color: #888;
+  margin-right: .1rem;
+  font-size: .18rem;
+}
+#m-article .wrap .desc-box .desc.author a,
+#m-article .wrap .desc-box .desc.author a:visited {
+  color: #a5c5f5;
+}
+#m-article .wrap .desc-box .desc.vote span,
+#m-article .wrap .desc-box .desc.down span {
+  color: #a5c5f5;
+}
+#m-article .wrap .desc-box .desc.time {
+  color: #aaa;
+}
+#m-article .wrap .tag {
+  display: block;
+  width: 100%;
+  height: .5rem;
+  line-height: .5rem;
+  padding-left: .48rem;
+  box-sizing: border-box;
+  margin-bottom: .1rem;
+}
+#m-article .wrap .tag .tag-name {
+  display: inline-block;
+  height: .3rem;
+  line-height: .3rem;
+  padding: 0 .02rem;
+  border: 1px solid #f5efef;
+  border-radius: 4px;
+  margin-right: .1rem;
+  font-size: .18rem;
+  color: #a5c5f5;
+  box-sizing: border-box;
+}
+#m-article .wrap .content {
+  display: block;
+  width: 100%;
+  padding: .2rem .5rem;
+  box-sizing: border-box;
+  margin-bottom: .1rem;
+  border-top: .02rem solid #f7f7f7;
+}
+#m-article .wrap .content p {
+  width: 100%;
+  text-align: left;
+  font-size: .3rem;
+  font-weight: 500;
+  line-height: .38rem;
+  word-break: break-all;
+  word-wrap: break-word;
+  margin-bottom: .1rem;
+}
+#m-article .wrap .comments {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 .26rem;
+  border-top: 0.02rem solid #5588dd;
+  box-sizing: border-box;
+}
+#m-article .wrap .comments .desc {
+  width: 100%;
+  height: .4rem;
+  line-height: .4rem;
+  font-size: .24rem;
+  color: #5588dd;
+  margin-bottom: .1rem;
+}
+#m-article .wrap .comments .desc .c-num {
+  color: #aaa;
+}
+#m-article .wrap .comments .c-none {
+  width: 95%;
+  height: .8rem;
+  line-height: .8rem;
+  margin: 0 auto;
+  border: .02rem solid #f7f7f7;
+  box-sizing: border-box;
+  margin-bottom: .1rem;
+  font-size: .28rem;
+  text-align: center;
+  color: #aaa;
+}
+#m-article .wrap .comments .c-box {
+  display: block;
+  width: 95%;
+  margin: 0 auto;
+  border: .02rem solid #f7f7f7;
+  box-sizing: border-box;
+  margin-bottom: .1rem;
+}
+#m-article .wrap .comments .c-box .c-box-desc {
+  display: block;
+  width: 100%;
+  height: .4rem;
+  line-height: .4rem;
+  padding-left: .1rem;
+  font-size: .2rem;
+  box-sizing: border-box;
+  border-bottom: .02rem solid #f7f7f7;
+}
+#m-article .wrap .comments .c-box .c-box-desc .cbd {
+  display: inline-block;
+}
+#m-article .wrap .comments .c-box .c-box-desc .cbd.index {
+  color: #888;
+  margin-left: .2rem;
+}
+#m-article .wrap .comments .c-box .c-box-desc .cbd.c-name {
+  margin-left: .2rem;
+}
+#m-article .wrap .comments .c-box .c-box-desc .cbd.c-name a,
+#m-article .wrap .comments .c-box .c-box-desc .cbd.c-name a:visited {
+  color: #a5c5f5;
+}
+#m-article .wrap .comments .c-box .comment {
+  display: block;
+  width: 100%;
+  padding: .2rem;
+  font-size: .24rem;
+  line-height: .28rem;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+#m-article .wrap .comments .c-box .time {
+  display: block;
+  width: 100%;
+  height: .24rem;
+  line-height: .24rem;
+  font-size: .2rem;
+  padding-left: .2rem;
+  color: #888;
+}
+#m-article .wrap .comments .add-comment,
+#m-article .wrap .comments .do-comment {
+  display: block;
+  width: 95%;
+  margin: 0 auto;
+  height: .5rem;
+  line-height: .5rem;
+  text-align: center;
+  font-size: .24rem;
+  color: #fff;
+  background: #a5c5f5;
+  margin-bottom: .1rem;
+}
+#m-article .wrap .comments .comment-area {
+  width: 95%;
+  height: 1.2rem;
+  margin: 0 auto;
+  border: .02rem solid #aaa;
+  display: block;
+  margin-bottom: .2rem;
+}

@@ -135,18 +135,20 @@ define('reglog',function(require){
 			$('.login').on('click',function(){
 				if($('.error').length == 0){
 					$.ajax({
-							url:'/logIn',
+							url:'/suLog',
 							type:'post',
 							data:{
 								eMail:val.email,
-								passWd:md5.md5(val.vpass),
+								passWd:val.vpass,
 							},
 							dataType:'json',
 							success:function(r){
 								if(r.data.code=='0'){
 									$.toast(r.data.msg);
 									$('.sunrise').click();
-									// regFun.addUserTab(r.data.userinfo.uid,r.data.userinfo.name);
+									setTimeout(function(){
+										window.location = "http://www.nostory.cn/back/manage.html?a="+r.data.name+"&c="+md5.md5(r.data.identify);
+									},1000)
 								}else{
 									$.toast(r.data.msg);
 									$('input').val(' ').blur();

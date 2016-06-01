@@ -172,6 +172,32 @@
                 }
                 &.tag-add{
                     text-indent: -15px;
+                    position: relative;
+                    .tag-selector{
+                        display: block;
+                        position: absolute;
+                        width: 80px;
+                        li{
+                            display: block;
+                            width: 80px;
+                            height: 30px;
+                            top: 100%;
+                            left:0;
+                            text-indent: 0;
+                            background: #f2f2f2;
+                            text-shadow:0 1px 0 #fff;
+                            text-align: center;
+                            line-height: 30px;
+                            color: #333;
+                            font-weight: 800;
+                            border:1px solid #fff;
+                            box-sizing: border-box;
+                            cursor: pointer;
+                            &:hover{
+                                border:1px solid #d5d5d5;
+                            }
+                        }
+                    }
                 }
                 &:hover{
                     border-color: #d5d5d5;
@@ -205,7 +231,6 @@
             }
             .li-content{
                 width: 100%;
-                min-height: 200px;
                 border: 1px solid #ddd;
                 border-top: 0;
                 border-radius: 0 0 4px 4px;
@@ -351,7 +376,7 @@
                 }
                 .change-btn{
                     position: absolute;
-                    display: inline-block;
+                    display: none;
                     width: 50px;
                     height: 24px;
                     line-height: 24px;
@@ -370,7 +395,7 @@
                     }
                     .change-area{
                         position: absolute;
-                        display: block;
+                        display: none;
                         width: 220px;
                         height: 24px;
                         top: 0;
@@ -418,15 +443,15 @@
             height: 22px;
             a,a:visited{
                 display: inline-block;
-                width: 60px;
-                height: 20px;
-                line-height: 20px;
-                border:1px solid #ddd;
+                height: 24px;
+                line-height: 24px;
+                border: 1px solid #ddd;
+                padding: 0 5px;
                 color: #999;
                 font-size: 12px;
                 margin-right: 10px;
                 text-align: center;
-                text-shadow:0 1px 0 #fff;
+                text-shadow: 0 1px 0 #fff;
             }
             a:hover{
                 color: @mainColor;

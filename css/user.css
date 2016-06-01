@@ -170,6 +170,32 @@
 }
 .user-wrap .user-content .user-tag .tag.tag-add {
   text-indent: -15px;
+  position: relative;
+}
+.user-wrap .user-content .user-tag .tag.tag-add .tag-selector {
+  display: block;
+  position: absolute;
+  width: 80px;
+}
+.user-wrap .user-content .user-tag .tag.tag-add .tag-selector li {
+  display: block;
+  width: 80px;
+  height: 30px;
+  top: 100%;
+  left: 0;
+  text-indent: 0;
+  background: #f2f2f2;
+  text-shadow: 0 1px 0 #fff;
+  text-align: center;
+  line-height: 30px;
+  color: #333;
+  font-weight: 800;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.user-wrap .user-content .user-tag .tag.tag-add .tag-selector li:hover {
+  border: 1px solid #d5d5d5;
 }
 .user-wrap .user-content .user-tag .tag:hover {
   border-color: #d5d5d5;
@@ -202,7 +228,6 @@
 }
 .user-wrap .user-content .user-post-area .li-content {
   width: 100%;
-  min-height: 200px;
   border: 1px solid #ddd;
   border-top: 0;
   border-radius: 0 0 4px 4px;
@@ -352,7 +377,7 @@
 }
 .set-account .info-change-list .li .u-data .change-btn {
   position: absolute;
-  display: inline-block;
+  display: none;
   width: 50px;
   height: 24px;
   line-height: 24px;
@@ -372,7 +397,7 @@
 }
 .set-account .info-change-list .li .u-data .change-btn .change-area {
   position: absolute;
-  display: block;
+  display: none;
   width: 220px;
   height: 24px;
   top: 0;
@@ -423,10 +448,10 @@
 .set-account .info-change-list .privacy-btn a,
 .set-account .info-change-list .privacy-btn a:visited {
   display: inline-block;
-  width: 60px;
-  height: 20px;
-  line-height: 20px;
+  height: 24px;
+  line-height: 24px;
   border: 1px solid #ddd;
+  padding: 0 5px;
   color: #999;
   font-size: 12px;
   margin-right: 10px;

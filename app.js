@@ -167,7 +167,7 @@ function reqEntry(req,res){
 		});
 		req.on('end',function(){
 			var param = qs.parse(postData.toString('utf-8'));
-			var aid = param['articleId'];
+			var aid = param['aid'];
 			article.getArticleByAid(res,aid);
 		});
 	}
@@ -221,6 +221,28 @@ function reqEntry(req,res){
 		});
 	}
 
+	/*
+	* Router POST/comments
+	* 评论文章：aid,oid,oName,replyTo,replyToId,content
+	*/
+	if(req.url == '/comments'){
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var aid = param['aid'],
+				oid = param['oid'],
+				oName = param['oName'],
+				replyTo = param['replyTo'],
+				replyToId = param['replyToId'],
+				content = param['content'];
+			console.log('1',aid);
+			article.comments(res,aid,oid,oName,replyTo,replyToId,content);
+		});
+	}
+
 
 	/* Captcha */
 	/*
@@ -256,12 +278,56 @@ function reqEntry(req,res){
 	};
 
 	/*
+	* Router POST/addUserTag
+	* 增加用户标签
+	*/
+	if(req.url == '/addUserTag'){
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var uid = param['uid'],
+				tag = param['tag'];
+			users.addUserTag(res,uid,tag);
+		});
+	};
+
+	/*
+	* Router POST/removeUserTag
+	* 删除用户标签
+	*/
+	if(req.url == '/removeUserTag'){
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var uid = param['uid'],
+				tag = param['tag'];
+			users.removeUserTag(res,uid,tag);
+		});
+	};
+
+	/*
 	* Router POST/changeUserInfo
 	* 修改用户信息
 	*/
-	if(req.url == '/changedUserInfo'){
+	if(req.url == '/changeUserInfo'){
 		//TODO
-		users.changeUserInfo(res,name,value);
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var uid = param['uid'],
+				item = param['item'],
+				value = param['value'];
+			users.changeUserInfo(res,uid,item,value);
+		});
 	};
 
 	/*
@@ -269,8 +335,16 @@ function reqEntry(req,res){
 	* 修改用户信息
 	*/
 	if(req.url == '/changePrivacy'){
-		//TODO
-		users.changePrivacy(res,uid,pCode);
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var uid = param['uid'],
+				status = param['status'];
+			users.changePrivacy(res,uid,status);
+		});
 	};
 
 	/*
@@ -373,18 +447,44 @@ function reqEntry(req,res){
 		});
 		req.on('end',function(){
 			var param = qs.parse(postData.toString('utf-8'));
-			var username = param['userName'],
+			var username = param['eMail'],
 				password = param['passWd'];
 			users.suLog(res,username,password);
 		});	
 	}
 
 	/*
+	* Get Single Admin
+	* getAdmin
+	*/
+	if(req.url == '/getAdmin'){
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var name = param['name'];
+			users.getAdmin(res,name);
+		});
+	}
+
+	/*
+
+	/*
 	* Get All Users List
 	* getUserList
 	*/
 	if(req.url == '/getUserList'){
-		users.getUserList();
+		users.getUserList(res);
+	}
+
+	/*
+	* Get All Article List
+	* getArticleList
+	*/
+	if(req.url == '/getArticleList'){
+		article.getArticleList(res);
 	}
 
 	/*
@@ -392,9 +492,66 @@ function reqEntry(req,res){
 	* deleteUser:uid
 	*/
 	if(req.url == '/deleteUser'){
-		users.deleteUser();
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var uid = param['uid'];
+			users.deleteUser(res,uid);
+		});		
 	}
 
+	/*
+	* Delete Article
+	* deleteArticle:aid
+	*/
+	if(req.url == '/deleteArticle'){
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var aid = param['aid'];
+			article.deleteArticle(res,aid);
+		});		
+	}
+
+	/*
+	* Get Top Article
+	* getTop
+	*/
+	if(req.url == '/getTop'){
+		article.getTop(res);
+	}
+
+
+	/*
+	* change Top Article
+	* changeTop:aid,imageUrl
+	*/
+	if(req.url == '/changeTop'){
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var aid = param['aid'],
+				img = param['img'];
+			article.changeTop(res,aid,img);
+		});		
+	}
+
+	/*
+	* get Hot Feed
+	* getHotFeed
+	*/
+	if(req.url == '/getHotFeed'){
+		article.getHotFeed(res);		
+	}
 
 }
 

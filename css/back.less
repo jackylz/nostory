@@ -1,0 +1,126 @@
+@mainColor:#a5c5f5; //#ffb4b4;light blue
+@hoverColor:#5588dd; //deeper blue
+@borderColor:#f5efef; //light gray
+#manage{
+	color: #555;
+	.top{
+		display: block;
+		width: 840px;
+		margin: 80px auto 30px;
+		.title{
+			font-size: 42px;
+			color: #555;
+		}
+		.role{
+			margin-top: 10px;
+			font-size: 16px;
+			.role-text{
+				color: red;
+			}
+		}
+	}
+	.tab-content{
+		display: block;
+		width: 840px;
+		min-height: 200px;
+		margin: 0 auto;
+		.nav-tab{
+			display: block;
+			width: 100%;
+			height: 35px;
+			line-height: 35px;
+			&.for-manage{display: none;}
+			li{
+				display: inline-block;
+				float: left;
+				padding: 0 10px;
+				text-align: center;
+				border-bottom: 1px solid #ddd;
+				cursor: pointer;
+				&:hover{
+					color: @mainColor;
+					border: 1px solid #ddd;
+					border-bottom: 0;
+				}
+				&.active{
+					border: 1px solid #ddd;
+					border-bottom: 0;
+					color: @mainColor;
+				}
+			}
+		}
+		.list{
+			display: block;
+			width: 840px;
+			margin: 10px auto;
+			table{
+				display: table;
+				color:#333;
+				border-width: 1px;
+				border-color: #666;
+				font-size: 14px;
+				border-collapse: collapse;
+				th{
+					padding: 20px;
+					border-width: 1px;
+					padding: 8px;
+					border-style: solid;
+					border-color: #666666;
+					background-color: @mainColor;
+				}
+				td{
+					padding: 10px 20px;
+					.delete-btn{
+						display: block;
+						width: 100%;
+						height: 100%;
+						text-align: center;
+						color: @mainColor;
+					}
+				}
+			}
+			.topArea{
+				display: block;
+				width: 100%;
+				.now-top{
+					.n-t{
+						display: block;
+						width: 100%;
+						height: 35px;
+						color: #555;
+						line-height: 35px;
+						font-size: 14px;
+						span{
+							color: @mainColor;
+						}
+					}
+				}
+				.input-new{
+					margin-top: 20px;
+					input{
+						width: 300px;
+						height: 30px;
+						line-height: 30px;
+						text-indent: 16px;
+						font-size: 16px;
+						outline: none;
+					}
+				}
+				a.top-confirm,a.top-confirm:visited{
+					display: block;
+					margin-top: 20px;
+					width: 80px;
+					height: 40px;
+					line-height: 40px;
+					border-radius: 4px;
+					text-align: center;
+					color: #fff;
+					background: @mainColor;
+				}
+				a.top-confirm:hover{
+					background: @hoverColor;
+				}
+			}
+		}
+	}
+}

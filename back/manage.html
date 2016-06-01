@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>后台管理 - NoStory</title>
+        <link rel="shortcut icon" type="image/x-icon" href="http://www.nostory.cn/images/n.png">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/base.css">
+        <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/back.css">
+        <script type="text/javascript" src="http://www.nostory.cn/js/libs.js"></script>
+        <script type="text/javascript">
+        	if(window.location.search == ""){
+        		window.location = "http://www.nostory.cn/back/index.html";
+        	}
+        </script>
+        <script type="text/javascript">
+            define.config({map:{
+                "reglog":"http://www.nostory.cn/js/reglog.js",
+                "index":"http://www.nostory.cn/js/index.js",
+                "md5":"http://www.nostory.cn/js/md5.js",
+                "template":"http://www.nostory.cn/js/template.js",
+                "publish": "http://www.nostory.cn/js/publish.js"
+            }});
+        </script>
+    </head>
+    <body id="manage">
+		<div class="top">
+			<div class="title">后台管理系统</div>
+			<div class="role">你的角色为 : <span class="role-text"></span></div>
+		</div>
+		<div class="tab-content">
+			<ul class="nav-tab for-admin">
+				<li class="tabs u-m">用户管理</li>
+				<li class="tabs a-m">文章管理</li>
+				<li class="tabs t-m">置顶主题文章管理</li>
+			</ul>
+			<ul class="nav-tab for-manage">
+				<li class="t-m active">置顶主题文章管理</li>
+			</ul>
+			<div class="list">
+
+			</div>
+		</div>
+    <script type="text/javascript">
+        $(function(){
+            require(["index"],function(_index){
+                _index.init();
+            });
+        });
+    </script>
+    </body>
+</html>

@@ -147,7 +147,7 @@ exports.getArticleByAid = function(res,aid){
 exports.voteArticle = function(res,aid){
 	var updateDocument = function(db,callback){
 		db.collection('article').find({"articleId":aid}).toArray().then(function(rs){
-			var newVote = String(Number(rs[0].vote)+1);
+			var newVote = Number(rs[0].vote)+1;
 			db.collection('article').update({"articleId":aid},{$set:{"vote":newVote}});
 			callback(newVote);
 		});
@@ -173,7 +173,7 @@ exports.voteArticle = function(res,aid){
 exports.downArticle = function(res,aid){
 	var updateDocument = function(db,callback){
 		db.collection('article').find({"articleId":aid}).toArray().then(function(rs){
-			var newDown = String(Number(rs[0].down)+1);
+			var newDown = Number(rs[0].down)+1;
 			db.collection('article').update({"articleId":aid},{$set:{"down":newDown}});
 			callback(newDown);
 		});
@@ -198,26 +198,54 @@ exports.downArticle = function(res,aid){
 * insert: ownerId,ownerName,replyTo*,replyToId*,content,date
 */
 exports.comments = function(res,aid,oid,oName,replyTo,replyToId,content){
+	console.log('2',aid);
+	var updateDocument = function(db){
+		db.collection('article').find({"articleId":aid}).toArray().then(function(rs){
+			if(rs){
+				console.log("3",rs);
+				db.collection('article').update({"articleId":aid},{$push:{"discusList":{"ownerId":oid,"ownerName":oName,"replyTo":replyTo,"replyToId":replyToId,"content":content, "comDate":moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")}}},function(){
+					httpRes.sendSuccess_nc(res,{"code":"0","msg":"评论成功!"});
+					db.close();
+				});
+			}else{
+				httpRes.sendSuccess_nc(res,{"code":"1","msg":"评论失败!"});
+				db.close();
+			}
+		});
+	};
 
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			updateDocument(db);
+		}
+	});
 }
-
-/*
-* get the hot feeds
-* getHotFeed
-*/
-exports.getHotFeed = function(res){
-
-}
-
 
 /** Management Backend **/
-/*
-* Set Top Article for admin/manager
-* Param: articleId,imgUrl / insertInto collections:topArticle
-*/
-exports.setTopArticle = function(res,article,imgUrl){
+exports.getArticleList = function(res){
 
+	var queryDocument = function(db,callback){
+		// var cursor = 
+		db.collection('article').find().sort({"postDate":-1}).toArray().then(function(rs){
+			httpRes.sendSuccess_nc(res,{"code":"0","msg":"获取文章列表成功","articleList":rs});
+		});
+	};
+	
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			queryDocument(db,function(){
+				db.close();
+			});
+		}
+	});
 };
+
 
 /*
 * Delete Article
@@ -225,7 +253,7 @@ exports.setTopArticle = function(res,article,imgUrl){
 */
 exports.deleteArticle = function(res,articleId){
 	var removeDocument = function(db,callback){
-		db.collections('article').remove({"articleId":articleId},function(err,rs){
+		db.collection('article').remove({"articleId":articleId},function(err,rs){
 			if(err){
 				console.log('daErr',err);
 			}else{
@@ -239,10 +267,94 @@ exports.deleteArticle = function(res,articleId){
 			httpRes.sendFailure(res,500,err);
 		}else{
 			assert.equal(err,null);
-			queryDocument(db,function(){
+			removeDocument(db,function(){
 				httpRes.sendSuccess_nc(res,{"code":"0","msg":"删除成功!"});
 				db.close();
 			});
+		}
+	});
+};
+
+/*
+* get Top Article
+* Param:none
+*/
+exports.getTop = function(res){
+	var queryDocument = function(db){
+		db.collection('topArticle').find({}).toArray().then(function(rs){
+			if(!rs){
+				console.log('getTopErr');
+			}else{
+				httpRes.sendSuccess_nc(res,{"code":"0","msg":"获取置顶文章成功!","top":rs[0]});
+				db.close();
+			}
+		});
+	};
+
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			queryDocument(db);
+		}
+	});
+};
+
+/*
+* change Top Article
+* Param:aid img
+*/
+exports.changeTop = function(res,aid,img){
+	var updateDocument = function(db){
+		db.collection('article').find({"articleId":aid}).toArray().then(function(rs){
+			if(rs){
+				var r = rs[0];
+				db.collection('topArticle').update({},{$set:{"articleId":r.articleId,"uId":r.uId,"author":r.author,"title":r.title,"vote":r.vote,"down":r.down,"tag":r.tag,"watchCount":r.watchCount,"topImg":img,"postDate":r.postDate}},function(){
+					httpRes.sendSuccess_nc(res,{"code":"0","msg":"修改成功!","aid":r.articleId,"topimg":img});
+					db.close();
+				});
+			}else{
+				httpRes.sendSuccess_nc(res,{"code":"1","msg":"修改失败!"});
+				db.close();
+			}
+		});
+	};
+
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			updateDocument(db);
+		}
+	});
+};
+
+/*
+* change Top Article
+* Param:aid img
+*/
+exports.getHotFeed = function(res){
+	var queryDocument = function(db){
+		db.collection('article').find({}).sort({"vote":-1}).limit(6).toArray().then(function(rs){
+			if(rs){
+				console.log('rs',rs);
+				httpRes.sendSuccess_nc(res,{"code":"0","msg":"查询热门文章成功!","hotfeed":rs});
+				db.close();
+			}else{
+				httpRes.sendSuccess_nc(res,{"code":"1","msg":"获取热门文章失败!"});
+				db.close();
+			}
+		});
+	};
+
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			queryDocument(db);
 		}
 	});
 };

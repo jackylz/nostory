@@ -41,7 +41,6 @@
 	}
 	.wrap{
 		width: 100%;
-		height: 100%;
 		padding-top: 1rem;
 		z-index: 99;
 		.post-top{
@@ -74,7 +73,7 @@
 					position: absolute;
 					width: auto;
 					height: .3rem;
-					line-height: .3rem;
+					line-height: .26rem;
 					text-align: center;
 					font-size: .2rem;
 					color: #a5c5f5;
@@ -110,6 +109,61 @@
 					background: #c3c3c3;
 				}
 			}
+			a.title,a.title:visited{
+				display: block;
+				width: 100%;
+				height: .6rem;
+				font-size: .24rem;
+				line-height: .6rem;
+				padding-left: .15rem;
+				color: #2d2d32;
+				box-sizing: border-box;
+				
+			}
+			a.title:hover{
+				color: #a5c5f5;
+			}
+			.info-area{
+				position: relative;
+				width: 100%;
+				height: .4rem;
+				line-height: .4rem;
+				font-size: .18rem;
+				color: #b4b4b4;
+				padding-left: .15rem;
+				box-sizing: border-box;
+				.post-author{
+					margin-left: .2rem;
+				}
+				.top-place{
+					position: absolute;
+					width: auto;
+					height: .3rem;
+					line-height: .26rem;
+					text-align: center;
+					font-size: .2rem;
+					color: #a5c5f5;
+					top: 0;
+					right: .3rem;
+					padding: 0 .06rem;
+					box-sizing: border-box;
+					border:.02rem solid #a5c5f5;
+					border-radius: .08rem;
+				}
+			}
+		}
+		.load-more{
+			display: block;
+			width: 95%;
+			height: .6rem;
+			line-height: .6rem;
+			box-sizing: border-box;
+			font-size: .2rem;
+			text-align: center;
+			margin:.15rem auto;
+			background: #a5c5f5;
+			color: #fff;
+			cursor: pointer;
 		}
 	}
 }

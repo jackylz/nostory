@@ -32,10 +32,10 @@
                     <div class="nav-logo">
                         <p class="ego"><a href="/">NoStory</a></p>
                     </div>
-                    <ul class="sign-log">
+                    <!-- <ul class="sign-log">
                         <li><a href="javascript:void(0);" class="reg-btn">注册</a></li>
                         <li><a href="javascript:void(0);" class="log-btn">登录</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
             <div class="user-wrap">
@@ -45,7 +45,7 @@
                             <div class="avatar"></div>
                             <div class="info-change-list">
                                 <div class="li">
-                                    <div class="u-data username">
+                                    <div class="u-data username" data-code="nickName">
                                         <span>林振</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="li">
                                     <div class="label">行业 : </div>
-                                    <div class="u-data area">
+                                    <div class="u-data area" data-code="area">
                                         <span>互联网</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="li">
                                     <div class="label">公司 : </div>
-                                    <div class="u-data company">
+                                    <div class="u-data company" data-code="company">
                                         <span>人人公司</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="li">
                                     <div class="label">职位 : </div>
-                                    <div class="u-data job-title">
+                                    <div class="u-data job-title" data-code="jobTitle">
                                         <span>前端开发工程师</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="li">
                                     <div class="label">毕业院校 : </div>
-                                    <div class="u-data college">
+                                    <div class="u-data college" data-code="college">
                                         <span>北京信息科技大学</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="li">
                                     <div class="label">专业 : </div>
-                                    <div class="u-data major">
+                                    <div class="u-data major" data-code="major">
                                         <span>网络工程</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="li">
                                     <div class="label">微信号 : </div>
-                                    <div class="u-data wechat">
+                                    <div class="u-data wechat" data-code="wechat">
                                         <span>lzl519616812</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="li">
                                     <div class="label">邮箱 : </div>
-                                    <div class="u-data email">
+                                    <div class="u-data email" data-code="eMail">
                                         <span>lin@nostory.cn</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -149,7 +149,7 @@
                                 </div>
                                 <div class="li">
                                     <div class="label">现居地 : </div>
-                                    <div class="u-data location">
+                                    <div class="u-data location" data-code="location">
                                         <span>北京市</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -162,7 +162,7 @@
                                 </div>
                                 <div class="li">
                                     <div class="label">家乡 : </div>
-                                    <div class="u-data hometown">
+                                    <div class="u-data hometown" data-code="hometown">
                                         <span>福建省</span>
                                         <div class="change-btn">
                                             <i class="icon"></i>
@@ -192,5 +192,12 @@
         </div>
         <div class="sunrise">
         </div>
+        <script type="text/javascript">
+            $(function(){
+                require(["index"],function(index){
+                    index.init();
+                });
+            });
+        </script>
     </body>
 </html>

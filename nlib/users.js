@@ -253,16 +253,147 @@ exports.getUserInfo = function(res,uid){
 * 修改用户资料
 * changeUserInfo
 */
-exports.changeUserInfo = function(res,uid,name,value){
+exports.changeUserInfo = function(res,uid,item,value){
+	var updateDocument = function(db,callback){
+		var tmp = "{"+item+":\""+value+"\"}";
+		var set = eval("("+tmp+")");
+		console.log(set);
+		db.collection('users').update(
+			{"uId":uid},
+			{$set:set},
+			function(err,rs){
+				if(err){
+					console.log("iderr",err);
+					httpRes.sendSuccess_nc(res,{"code":"1","msg":"修改失败！"});
 
+				}else{
+					httpRes.sendSuccess_nc(res,{"code":"0","msg":"修改成功！"});
+					db.close();
+				}
+			}
+		);
+	};
+
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			updateDocument(db);
+		}
+	});
 };
+
+/*
+* 增加用户标签
+* addUserTag
+*/
+exports.addUserTag = function(res,uid,tag){
+	var updateDocument = function(db,callback){
+		db.collection('users').find({"uId":uid}).toArray().then(function(docs){
+			if(docs[0].userTag.some(function(a){ return a == tag})){
+				httpRes.sendSuccess_nc(res,{"code":"1","msg":"已存在该标签！"});
+			}else{
+				db.collection('users').update(
+					{"uId":uid},
+					{$push:{"userTag":tag}},
+					function(err,rs){
+						if(err){
+							console.log("iderr",err);
+							httpRes.sendSuccess_nc(res,{"code":"1","msg":"修改失败！"});
+							db.close();
+						}else{
+							httpRes.sendSuccess_nc(res,{"code":"0","msg":"修改成功！","addedTag":tag});
+							db.close();
+						}
+					}
+				);
+			}
+		});
+		
+	};
+
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			updateDocument(db);
+		}
+	});
+};
+
+/*
+* 删除用户标签
+* removeUserTag
+*/
+exports.removeUserTag = function(res,uid,tag){
+	var updateDocument = function(db,callback){
+		db.collection('users').find({"uId":uid}).toArray().then(function(docs){
+			if(!docs[0].userTag.some(function(a){ return a == tag})){
+				httpRes.sendSuccess_nc(res,{"code":"1","msg":"不存在该标签！"});
+			}else{
+				db.collection('users').update(
+					{"uId":uid},
+					{$pull:{"userTag":tag}},
+					function(err,rs){
+						if(err){
+							console.log("iderr",err);
+							httpRes.sendSuccess_nc(res,{"code":"1","msg":"修改失败！"});
+							db.close();
+						}else{
+							httpRes.sendSuccess_nc(res,{"code":"0","msg":"修改成功！","reomvedTag":tag});
+							db.close();
+						}
+					}
+				);
+			}
+		});
+		
+	};
+
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			updateDocument(db);
+		}
+	});
+};
+
+
 
 /*
 * 修改用户隐私设置
 * changeprivacy
 */
-exports.changePrivacy = function(res,uid,pCode){
+exports.changePrivacy = function(res,uid,status){
+	var updateDocument = function(db,callback){
+		db.collection('users').update(
+			{"uId":uid},
+			{$set:{"privacy":status}},
+			function(err,rs){
+				if(err){
+					console.log("iderr",err);
+					httpRes.sendSuccess_nc(res,{"code":"1","msg":"修改失败！"});
+					db.close();
+				}else{
+					httpRes.sendSuccess_nc(res,{"code":"0","msg":"修改成功！"});
+					db.close();
+				}
+			}
+		);
+	};
 
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			updateDocument(db);
+		}
+	});
 };
 
 
@@ -271,7 +402,7 @@ exports.changePrivacy = function(res,uid,pCode){
 * 管理员登陆
 * suLog:userName,passWd
 */
-exports.suLog = function(res,uname,passwd){
+exports.suLog = function(res,name,passwd){
 
 	var queryDocument = function(db,callback){
 		var cursor = db.collection('admin').find({"name":name});
@@ -282,7 +413,7 @@ exports.suLog = function(res,uname,passwd){
 				console.log('err',err);
 			}else if(doc != null){
 				if(doc.passwd == passwd){
-					httpRes.sendSuccess(res,{"code":"0","msg":"登陆成功"},name,doc.role);
+					httpRes.sendSuccess_nc(res,{"code":"0","msg":"登陆成功","name":doc.name,"identify":doc.passwd});
 					db.close();
 				}else if(doc.passwd != passwd){
 					httpRes.sendSuccess_nc(res,{"code":"1","msg":"登陆失败，用户名或密码错误"});
@@ -308,16 +439,91 @@ exports.suLog = function(res,uname,passwd){
 }
 
 /*
+* getAdmin
+*/
+exports.getAdmin = function(res,name){
+	var queryDocument = function(db,callback){
+		var cursor = db.collection('admin').find({"name":name});
+		cursor.each(function(err,doc){
+			assert.equal(err,null);
+			console.log("doc:",doc);
+			if(err){
+				console.log('err',err);
+			}else if(doc != null){
+				httpRes.sendSuccess_nc(res,{"code":"0","msg":"获取成功","role":doc.role});
+				db.close();
+			}else{
+				httpRes.sendSuccess_nc(res,{"code":"1","msg":"错误！用户名不存在"});
+				console.log("username is not found.");
+				db.close();
+			}
+		});
+	};
+
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			queryDocument(db);
+		}
+	});
+};
+
+/*
 * 管理员获取用户列表
 * getUserList
 */
-exports.getUserList = function(){};
+exports.getUserList = function(res){
+	var queryDocument = function(db,callback){
+		db.collection('users').find({}).sort({"uId":1}).toArray().then(function(docs){
+			if(docs!=null){
+				httpRes.sendSuccess_nc(res,{"code":"0","msg":"获取成功","userList":docs});
+				db.close();
+			}else{
+				httpRes.sendSuccess_nc(res,{"code":"1","msg":"错误！"});
+				db.close();
+			}
+		});
+	};
+
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			queryDocument(db);
+		}
+	});
+};
 
 /*
 * 管理员删除用户
 * deleteUser
 */
-exports.deleteUser = function(res,uid){};
+exports.deleteUser = function(res,uid){
+	var removeDocument = function(db,callback){
+		db.collection('users').deleteOne({"uId":uid},function(err,rs){
+			if(err){
+				console.log('duerr',err);
+			}else{
+				callback();
+			}
+		});
+	};
+
+	mongoClient.connect(dbUrl,function(err,db){
+		if(err){
+			httpRes.sendFailure(res,500,err);
+		}else{
+			assert.equal(err,null);
+			removeDocument(db,function(){
+				httpRes.sendSuccess_nc(res,{"code":"0","msg":"删除成功!"});
+				db.close();
+			});
+		}
+	});
+};
 
 
 
