@@ -1,5 +1,7 @@
 define('publish',function(require){
 
+    var reg = require('reglog');
+
     editText = {
         title:null,
         raw:null,
@@ -34,7 +36,7 @@ define('publish',function(require){
                             if(r.data.code == '0'){
                                 $.toast('发表成功');
                                 setTimeout(function(){
-                                   // window.location = 'http://www.nostory.cn'; 
+                                   window.location = 'http://www.nostory.cn'; 
                                 },1000);
                                 
                             }
@@ -118,6 +120,11 @@ define('publish',function(require){
             editText.raw = $(editBody).text();
             console.log('et:',$(editBody).text());
         },
+
+        getCookieStatus:function(){
+            var cookieTmp = $.getCookie();
+            reg.regFun.addUserTab(cookieTmp[1],cookieTmp[0]);
+        }
     }
 
     init = function(){
@@ -126,6 +133,7 @@ define('publish',function(require){
         fun.resetBtnEvent();
         fun.addTag();
         fun.deleteTag();
+        fun.getCookieStatus();
 
         // $("iframe").contents().find("body").on('keyup',function(){
         //  fun.getRawContentLength()

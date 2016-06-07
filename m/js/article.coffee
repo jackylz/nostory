@@ -94,13 +94,4 @@
                                 </div>"""
                             $('.comments').find('.desc').after comHtml
                             $('.comments .desc').find('.c-num').text """(#{$('.c-box').length})"""
-                        
-
-
-
-
-
-
-
-
 )();

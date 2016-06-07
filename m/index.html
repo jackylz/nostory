@@ -10,6 +10,13 @@
         <link rel="stylesheet" type="text/css" href="http://www.nostory.cn/css/reset.css">
         <link rel="stylesheet" type="text/css" href="http://m.nostory.cn/css/index.css">
         <script type="text/javascript" src="http://m.nostory.cn/js/index.js"></script>
+        <script type="text/javascript">
+            var cookies = $.getCookie();
+            var flag = cookies?(cookies[1]?true:false):false;
+            if(!flag){
+                window.location = 'http://m.nostory.cn/noAuth.html';
+            }
+        </script>
     </head>
     <body id="m-index">
         <div class="header">

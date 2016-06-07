@@ -34,8 +34,8 @@ exports.publish = function(res,uId,title,content,raw,tag){
 					"content":content,
 					"raw":raw,
 					"tag":tagArr,
-					"vote":"0",
-					"down":"0",
+					"vote":0,
+					"down":0,
 					"watchCount":"0",
 					"discusList":[],
 					"postDate":moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
@@ -337,7 +337,7 @@ exports.changeTop = function(res,aid,img){
 */
 exports.getHotFeed = function(res){
 	var queryDocument = function(db){
-		db.collection('article').find({}).sort({"vote":-1}).limit(6).toArray().then(function(rs){
+		db.collection('article').find({}).sort({"vote":-1}).limit(5).toArray().then(function(rs){
 			if(rs){
 				console.log('rs',rs);
 				httpRes.sendSuccess_nc(res,{"code":"0","msg":"查询热门文章成功!","hotfeed":rs});

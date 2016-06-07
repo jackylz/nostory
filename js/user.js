@@ -80,7 +80,11 @@ define('user',function(require){
             this.getUserInfo();
             this.getArticleByUid();
             this.getRelation();
-            this.tagEvent();
+            if($.getCookie()[1] == window.location.search.replace('?', '').split('=')[1]){
+                console.log(1);
+               this.tagEvent(); 
+            }
+            
         },
 
         getUserInfo:function(){
@@ -329,26 +333,28 @@ define('user',function(require){
 
         removeTag:function(){
             $('.tag-name').off('click').on('click',function(){
-                var self = $(this);
-                var tagValue = self.text();
-                var html = "";
-                $.ajax({
-                    url:"http://www.nostory.cn/removeUserTag",
-                    type:"post",
-                    dataType:"json",
-                    data:{
-                        "uid":$.getCookie()[1],
-                        "tag":tagValue
-                    },
-                    success:function(r){
-                        var rs = r.data;
-                        if(rs.code == '0'){
-                            self.remove();
-                        }else{
-                            $.toast(rs.msg);
+                if($.getCookie()[1] == window.location.search.replace('?', '').split('=')[1]){
+                    var self = $(this);
+                    var tagValue = self.text();
+                    var html = "";
+                    $.ajax({
+                        url:"http://www.nostory.cn/removeUserTag",
+                        type:"post",
+                        dataType:"json",
+                        data:{
+                            "uid":$.getCookie()[1],
+                            "tag":tagValue
+                        },
+                        success:function(r){
+                            var rs = r.data;
+                            if(rs.code == '0'){
+                                self.remove();
+                            }else{
+                                $.toast(rs.msg);
+                            }
                         }
-                    }
-                });
+                    });
+                }
             });
         }
     };

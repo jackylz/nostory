@@ -365,6 +365,23 @@ function reqEntry(req,res){
 	}
 
 	/*
+	* Router POST/getRecUser
+	* param:uid
+	* 获取推荐好友列表 
+	*/
+	if(req.url == '/getRecUser'){
+		var postData = "";
+		req.on('data',function(chunk){
+			postData += chunk;
+		});
+		req.on('end',function(){
+			var param = qs.parse(postData.toString('utf-8'));
+			var uid = param['uid'];
+			users.getRecUser(res,uid);
+		});
+	}
+
+	/*
 	* Router POST/getFellowedList
 	* param:uid
 	* 获取粉丝列表 

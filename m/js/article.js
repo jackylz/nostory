@@ -100,7 +100,7 @@
             } else {
               comHtml = "";
               $.each(rs.discusList, function(i, n) {
-                return comHtml += "<div class=\"c-box\">\n    <div class=\"c-box-desc\">\n        <div class=\"cbd index\">\#" + (i+1) + "</div>\n        <div class=\"cbd c-name\"><a href=\"javascript:;\" class=\"cbd-link\">@" + n.ownerName + "</a></div>\n    </div>\n    <div class=\"comment\">" + n.content + "</div>\n    <div class=\"time\">" + n.comDate + "</div>\n</div>";
+                return comHtml += "<div class=\"c-box\">\n    <div class=\"c-box-desc\">\n        <div class=\"cbd index\">\#" + (i + 1) + "</div>\n        <div class=\"cbd c-name\"><a href=\"javascript:;\" class=\"cbd-link\">@" + n.ownerName + "</a></div>\n    </div>\n    <div class=\"comment\">" + n.content + "</div>\n    <div class=\"time\">" + n.comDate + "</div>\n</div>";
               });
               $('.comments').find('.desc').after(comHtml);
               return $('.comments .desc').find('.c-num').text("(" + ($('.c-box').length) + ")");

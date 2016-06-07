@@ -18,6 +18,13 @@
 				"publish": "http://www.nostory.cn/js/publish.js"
 			}});
 		</script>
+		<script type="text/javascript">
+			var cookies = $.getCookie();
+			var flag = cookies?(cookies[1]?true:false):false;
+			if(!flag){
+				window.location = 'http://www.nostory.cn/noAuth.html';
+			}
+		</script>
 	</head>
 	<body>
 		<div class="container">
@@ -26,10 +33,10 @@
 					<div class="nav-logo">
 						<p class="ego"><a href="/">NoStory</a></p>
 					</div>
-					<ul class="sign-log">
+					<!-- <ul class="sign-log">
 						<li><a href="javascript:void(0);" class="reg-btn">注册</a></li>
 						<li><a href="javascript:void(0);" class="log-btn">登录</a></li>
-					</ul>
+					</ul> -->
 				</div>
 			</div>
 			<div class="publish">

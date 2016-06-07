@@ -103,9 +103,7 @@
 						$.each(r.articleList,function(i,n){
 							var tagHtml = "";
 							if(n.tag.length > 0){
-								$.each(n.tag,function(i,n){
-									tagHtml += "<div class=\"top-place\">"+ n +"</div>";
-								});
+								tagHtml = "<div class=\"top-place\">"+ n.tag[0] +"</div>";
 							}else{
 								tagHtml = "";
 							}

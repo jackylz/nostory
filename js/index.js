@@ -73,6 +73,140 @@ define('index',['require'],function(require) {
 			});
 		},
 
+		getRecUser:function(){
+			$.ajax({
+				url:"/getRecUser",
+				type:"post",
+				dataType:"json",
+				data:{
+					"uid":$.getCookie()[1]
+				},
+				success:function(r){
+					var rd = r.data;
+					var rs = rd.friendsList;
+					var html = "";
+					if(rd.code=="0"){
+						$.each(rs,function(i,n){
+							if(i<2){
+								html += "<div class=\"rec-friends\">\
+								<a href=\"http://www.nostory.cn/user/info.html?userId="+ n.uId +"\" class=\"rf-name\">@"+ n.nickName +"</a>\
+								<a href=\"javascript:;\" class=\"follow-btn to-fellow\" data-id=\""+ n.uId +"\">关注</a>\
+							</div>";
+							}
+						});
+						
+						$('.n-right-bot').append(html);
+						funList.fellowEvent($.getCookie()[1],$('.to-fellow').attr("data-id"));
+					}
+				}
+			});
+		},
+
+		getRelation:function(uid,_uid){
+			var dataCode = "";
+			$.ajax({
+                url:"http://www.nostory.cn/getRelation",
+                type:"post",
+                dataType:"json",
+                data:{
+                    "uId":uid,
+                    "_uId":_uid
+                },
+                success:function(rs){
+                    var r = rs.data;
+                    console.log(r.dataCode);
+                    dataCode = r.dataCode;
+                    // if(r.dataCode == 0 || r.dataCode == 2){
+                    //     $('.follow-btn').attr('data-code',r.dataCode);
+                    //     funList.fellowEvent(uid,_uid,r.dataCode);
+                    // }else if(r.dataCode == 1){
+                    //     $('.follow-btn').attr('data-code',r.dataCode);
+                    //     funList.unfellowEvent(uid,_uid);
+                    // }else if(r.dataCode == 3){
+                    //     $('.follow-btn').attr('data-code',r.dataCode);
+                    //     funList.friendEvent(uid,_uid);
+                    // } 
+                }
+            });
+            return dataCode;
+		},
+
+		fellowEvent:function(uid,_uid){
+            $('.to-fellow').off('click').on('click',function(){
+            	var code = funList.getRelation(uid,_uid);
+            	var self = $(this);
+                $.ajax({
+                    url:"http://www.nostory.cn/fellow",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        "uId":uid,
+                        "_uId":_uid
+                    },
+                    success:function(rs){
+                        var r = rs.data;
+                        if(r.code == "0"){
+                        	console.log('dataCode',code);
+                            if(code == 0){
+                            	self.text('取关');
+                                self.addClass('has-fellowed').removeClass('to-fellow');
+                                funList.unfellowEvent(uid,_uid);
+                            }else if(code == 2){
+                                self.text('好友');
+                                self.addClass('relation-friends').removeClass('to-fellow');
+                                funList.friendEvent(uid,_uid);
+                            }  
+                        }
+                    }
+                });
+            });
+        },
+
+        unfellowEvent:function(uid,_uid){
+            $('.has-fellowed').off('click').on('click',function(){
+            	var self = $(this);
+                $.ajax({
+                    url:"http://www.nostory.cn/unfellow",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        "uId":uid,
+                        "_uId":_uid
+                    },
+                    success:function(rs){
+                        var r = rs.data;
+                        if(r.code == "0"){
+                            self.text('关注');
+                            self.addClass('to-fellow').removeClass('has-fellowed');
+                        	funList.fellowEvent(uid,_uid);
+                        }
+                    }
+                });
+            });
+        },
+
+        friendEvent:function(uid,_uid){
+            $('.relation-friends').off('click').on('click',function(){
+                $.ajax({
+                    url:"http://www.nostory.cn/unfellow",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        "uId":uid,
+                        "_uId":_uid
+                    },
+                    success:function(rs){
+                        var r = rs.data;
+                        if(r.code == "0"){
+                            self.text('关注');
+                            self.addClass('to-fellow').removeClass('relation-friends');
+                        	funList.fellowEvent(uid,_uid);
+                        }
+                    }
+                });
+            });
+        },
+
 		getArticleList:function(){
 			$.ajax({
 				url:"http://www.nostory.cn/getArticle",
@@ -100,7 +234,7 @@ define('index',['require'],function(require) {
 							}
 							console.log("ctmp",contentTmp);
 							strHtml += "<div class=\"n-left-wrap\">\
-								<h1>"+ n.title +"</h1>\
+								<a href=\"http://www.nostory.cn/article.html?aid="+ n.articleId +"\" target=\"_blank\"><h1 style=\"width:666px\">"+ n.title +"</h1>\
 								<div class=\"info clearfix\">\
 									<div class=\"sub-info author-name\">作者：<a href=\"http://www.nostory.cn/user/info.html?userId="+ n.uId +"\">@"+ n.author +"</a></div>\
 									<div class=\"sub-info publish-time\">发表于：<span>"+ n.postDate +"</span></div>\
@@ -204,13 +338,13 @@ define('index',['require'],function(require) {
 					if(rs.code == '0'){
 						$.each(rs.hotfeed,function(i,n){
 							tmpHtml += "<div class=\"article-list\">\
-								<a href=\"http://m.nostory.cn/article.html?aid="+ n.articleId +"\" class=\"a-title\" target=\"_blank\">"+ n.title +"</a>\
+								<a href=\"http://www.nostory.cn/article.html?aid="+ n.articleId +"\" class=\"a-title\" target=\"_blank\">"+ n.title +"</a>\
 								<div class=\"read-author\">作者：<span>"+ n.author +"</span></div>\
 								<div class=\"read-num\">赞同数：<span>"+ n.vote +"</span></div>\
 							</div>";
 						});
 						$('.link-wrap').append(tmpHtml);
-						$('.article-list').eq(5).addClass('last');
+						$('.article-list').eq(4).addClass('last');
 					}else{
 						$.toast(rs.msg);
 					}
@@ -346,7 +480,7 @@ define('index',['require'],function(require) {
 						$.each(rs.articleList,function(i,n){
 							tmpHtml += "<tr>\
 								<td>"+n.articleId+"</td>\
-								<td><a href=\"http://m.nostory.cn/article.html?aid="+ n.articleId +"\" class=\"a-link\" target=\"_blank\">"+n.title+"</td>\
+								<td><a href=\"http://www.nostory.cn/article.html?aid="+ n.articleId +"\" class=\"a-link\" target=\"_blank\">"+n.title+"</td>\
 								<td>"+ n.author +"</td>\
 								<td>"+ n.postDate +"</td>\
 								<td><a href=\"javascript:;\" class=\"delete-btn article-delete\" data-id=\""+ n.articleId +"\">删除</a></td>\
@@ -622,6 +756,7 @@ define('index',['require'],function(require) {
 			funList.loadMore();
 			funList.getUserCard();
 			funList.getHotFeed();
+			funList.getRecUser();
 		}
 			
 		if(location.href.indexOf('setAccount')!=-1){

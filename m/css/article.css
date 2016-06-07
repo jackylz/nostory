@@ -20,6 +20,9 @@
   font-size: .4rem;
   color: #a5c5f5;
   border-left: .08rem solid #a5c5f5;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #m-article .wrap .desc-box {
   display: block;
@@ -185,5 +188,6 @@
   margin: 0 auto;
   border: .02rem solid #aaa;
   display: block;
+  font-size: .24rem;
   margin-bottom: .2rem;
 }
